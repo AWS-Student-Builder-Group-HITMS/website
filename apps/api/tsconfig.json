@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "type": "module",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": false,
+    "baseUrl": ".",
+    "paths": {
+      "@api/*": ["src/*"],
+      "@shared/*": ["../../packages/shared/src/*"]
+    },
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "references": [{ "path": "../../packages/shared" }],
+  "include": ["src"]
+}

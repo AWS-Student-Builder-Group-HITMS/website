@@ -1,0 +1,9 @@
+{
+  "name": "@shared",
+  "version": "1.0.0",
+  "description": "shared stuff like types and utils",
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf dist tsconfig.tsbuildinfo"
+  }
+}
