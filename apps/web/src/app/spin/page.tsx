@@ -299,12 +299,9 @@ export default function SpinWheel() {
         const b = boys[idxB];
         setWinner({ girl: g, boy: b });
 
-        // run confetti
         runConfetti("#ff4d9e");
         runConfetti("#4da4ff");
 
-        // open dialog AFTER confetti triggers (dialog animation handled in useEffect)
-        // save activeElement for focus restore
         lastActiveEl.current = document.activeElement as HTMLElement | null;
         setDialogOpen(true);
       },
@@ -358,7 +355,6 @@ export default function SpinWheel() {
       ease: "power2.in",
       onComplete: () => {
         setDialogOpen(false);
-        // restore last active element
         if (lastActiveEl.current) lastActiveEl.current.focus();
       },
     });
@@ -368,7 +364,6 @@ export default function SpinWheel() {
   useEffect(() => {
     if (!dialogOpen) return;
 
-    // animate dialog in
     const el = dialogRef.current;
     if (el) {
       gsap.killTweensOf(el);
@@ -379,7 +374,6 @@ export default function SpinWheel() {
       );
     }
 
-    // focus first focusable (primary button)
     requestAnimationFrame(() => {
       if (primaryBtnRef.current) primaryBtnRef.current.focus();
     });
@@ -388,7 +382,6 @@ export default function SpinWheel() {
       if (e.key === "Escape") {
         closeDialogWithAnimation();
       } else if (e.key === "Tab") {
-        // basic focus trap inside dialogRef
         const node = dialogRef.current;
         if (!node) return;
         const focusable = Array.from(
@@ -464,7 +457,7 @@ export default function SpinWheel() {
           height={176}
           width={176}
           className="place-self-center"
-          src={"/logo.svg"}
+          src={"/ccLogo.svg"}
         />
         <div className="place-self-center justify-self-center">
           <h1 className="text-7xl text-primary -ml-18 font-bold">Lucky Draw</h1>
@@ -484,7 +477,7 @@ export default function SpinWheel() {
         className={clsx(
           "flex flex-col items-center gap-6 transition-filter duration-200",
           {
-            "filter blur-sm": dialogOpen, // optional: blur main content when dialog open
+            "filter blur-sm": dialogOpen,
           },
         )}>
         <div className="flex flex-wrap items-start gap-8 justify-center">
