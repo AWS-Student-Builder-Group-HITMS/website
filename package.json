@@ -2,25 +2,12 @@
   "name": "awscc",
   "version": "1.0.0",
   "description": "",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "main": "index.js",
   "scripts": {
-    "dev": "turbo run dev --parallel",
-    "build": "turbo run build",
-    "preview": "turbo run preview",
-    "clean": "turbo run clean"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "rimraf": "^6.1.2",
-    "tsc-alias": "^1.8.16",
-    "tsx": "^4.21.0",
-    "turbo": "^2.8.3",
-    "typescript": "^5.9.3"
-  },
-  "packageManager": "pnpm@10.25.0"
+  "packageManager": "pnpm@10.30.0"
 }
