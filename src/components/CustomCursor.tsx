@@ -29,18 +29,19 @@ export function CustomCursor() {
       raf = requestAnimationFrame(loop);
     };
 
-    const onOver = (e: Event) => {
-      const interactive = (e.target as HTMLElement)?.closest?.("a, button, [data-hover], input, textarea, select");
+    const onMove2 = (e: PointerEvent) => {
+      const target = e.target as HTMLElement;
+      const interactive = target?.closest?.("a, button, [data-hover], input, textarea, select");
       document.documentElement.classList.toggle("cursor-hover", !!interactive);
     };
 
     window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerover", onOver);
+    window.addEventListener("pointermove", onMove2);
     raf = requestAnimationFrame(loop);
 
     return () => {
       window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerover", onOver);
+      window.removeEventListener("pointermove", onMove2);
       cancelAnimationFrame(raf);
     };
   }, []);

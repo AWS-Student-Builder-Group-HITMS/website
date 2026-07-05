@@ -1,0 +1,20 @@
+# AWS Student Builder Group HITMS - Robots Configuration
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /events
+Allow: /members
+Allow: /resources
+Allow: /contact
+
+# Disallow private/admin routes (if any)
+Disallow: /admin
+Disallow: /private
+Disallow: /.env*
+Disallow: /node_modules
+
+# Sitemap location
+Sitemap: https://sbg-hitms.dev/sitemap.xml
+
+# Crawl delay for respectful crawling (optional)
+Crawl-delay: 1

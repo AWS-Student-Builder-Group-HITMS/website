@@ -53,8 +53,8 @@ export function Navbar() {
                 <Link
                   to={l.to}
                   data-hover
-                  className={`relative px-4 py-1.5 text-sm rounded-full transition-colors ${
-                    active ? "text-primary-foreground" : "text-foreground/80 hover:text-primary"
+                  className={`relative px-4 py-1.5 text-sm rounded-full transition-colors font-semibold ${
+                    active ? "text-primary-foreground bg-primary" : "text-primary"
                   }`}
                 >
                   <span className="relative z-10">{l.label}</span>

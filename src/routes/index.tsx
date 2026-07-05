@@ -75,7 +75,7 @@ export default function Index() {
 
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-            className="mt-6 max-w-xl text-sm md:text-base text-muted-foreground/90 tracking-wide px-2"
+            className="mt-6 max-w-xl text-sm md:text-base text-foreground/90 tracking-wide px-2"
           >
             Same community. Stronger vision. Bigger future —
             engineered on the cloud by the next wave of builders.
@@ -111,7 +111,7 @@ export default function Index() {
             {heroStats.map((s) => (
               <div key={s.l} className="px-3 py-3 sm:px-4 sm:py-4 bg-background/40">
                 <div className="text-xl sm:text-2xl md:text-3xl font-black text-gradient-primary">{s.n}</div>
-                <div className="text-[8px] sm:text-[9px] tracking-[0.25em] sm:tracking-[0.3em] uppercase text-muted-foreground mt-1">{s.l}</div>
+                <div className="text-[8px] sm:text-[9px] tracking-[0.25em] sm:tracking-[0.3em] uppercase text-foreground/75 mt-1">{s.l}</div>
               </div>
             ))}
           </motion.div>
@@ -131,11 +131,57 @@ export default function Index() {
       <section className="relative py-6 border-y border-border/60 bg-card/30 overflow-hidden">
         <div className="flex gap-12 whitespace-nowrap animate-marquee text-2xl md:text-3xl font-black tracking-tight uppercase">
           {[...marquee, ...marquee].map((m, i) => (
-            <span key={i} className="inline-flex items-center gap-12 text-muted-foreground/60">
+            <span key={i} className="inline-flex items-center gap-12 text-foreground/75">
               {m}
               <span className="text-primary">✦</span>
             </span>
           ))}
+        </div>
+      </section>
+
+      {/* WHAT WE DO + WHO WE ARE */}
+      <section className="relative py-24 px-4 md:px-8 overflow-hidden">
+        <div className="relative max-w-7xl mx-auto grid gap-6 lg:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="rounded-3xl border border-primary/35 bg-card/95 p-8 md:p-10 shadow-[0_0_45px_rgba(0,0,0,0.18)]"
+          >
+            <p className="text-xs tracking-[0.3em] uppercase text-primary font-bold mb-3">What We Do</p>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight">We turn curiosity into cloud capability.</h2>
+            <p className="mt-4 text-base leading-relaxed text-foreground/80">
+              We create a welcoming space for students to learn AWS, build practical projects, and grow into the next generation of cloud builders.
+            </p>
+            <div className="mt-8 grid sm:grid-cols-2 gap-4">
+              {whatWeDo.map((item) => (
+                <div key={item.title} className="rounded-2xl border border-border/80 bg-background/70 p-4">
+                  <div className="mb-3 inline-flex rounded-xl border border-primary/35 bg-primary/10 p-2 text-primary">
+                    <item.icon size={18} />
+                  </div>
+                  <h3 className="font-semibold text-foreground">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/75">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="rounded-3xl border border-border/80 bg-background/80 p-8 md:p-10"
+          >
+            <p className="text-xs tracking-[0.3em] uppercase text-primary font-bold mb-3">Who We Are</p>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight">A student-led builder community at HITMS.</h2>
+            <p className="mt-4 text-base leading-relaxed text-foreground/80">
+              We are learners, mentors, problem-solvers, and future cloud professionals who build together, share knowledge, and lift each other up.
+            </p>
+            <ul className="mt-8 space-y-3 text-foreground/80">
+              {whoWeAre.map((item) => (
+                <li key={item} className="flex items-start gap-3 rounded-2xl border border-border/60 bg-card/60 px-4 py-3">
+                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-primary" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </section>
 
@@ -171,7 +217,7 @@ export default function Index() {
                   </div>
                 </div>
                 <h3 className="text-xl font-black mb-2 tracking-tight">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-foreground/80 leading-relaxed">{f.desc}</p>
                 <div className="mt-5 flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-primary opacity-0 group-hover:opacity-100 transition">
                   <span>Explore</span>
                   <ArrowRight size={12} className="group-hover:translate-x-1 transition" />
@@ -186,6 +232,51 @@ export default function Index() {
 
       {/* STATS PARALLAX */}
       <ParallaxStats />
+
+      {/* EVENTS PREVIEW */}
+      <section className="relative py-24 px-4 md:px-8 overflow-hidden">
+        <div className="relative max-w-7xl mx-auto">
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-xs tracking-[0.3em] uppercase text-primary font-bold mb-2">Events</p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight">Join what is happening next.</h2>
+            </div>
+            <Link to="/events" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+              Explore all events <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+            {featuredEvents
+              .filter((event, index, all) => all.findIndex((item) => item.title === event.title && item.date === event.date) === index)
+              .map((event, index) => (
+                <motion.div
+                  key={`${event.title}-${event.date}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: index * 0.05, duration: 0.35 }}
+                  className="group flex h-full min-h-[220px] flex-col justify-between rounded-2xl border border-border/80 bg-card/85 p-4 shadow-[0_0_24px_rgba(0,0,0,0.12)] transition-all hover:-translate-y-1"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.24em] text-primary">
+                      {event.type}
+                    </span>
+                    <span className="text-xs font-medium text-foreground/70">{event.date}</span>
+                  </div>
+                  <div className="mt-4 flex-1">
+                    <h3 className="text-lg font-black tracking-tight text-foreground">{event.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/75">{event.desc}</p>
+                  </div>
+                  <div className="mt-4 flex items-center justify-between gap-3 text-xs text-foreground/70">
+                    <span className="line-clamp-1">{event.location}</span>
+                    <span className="font-semibold text-primary">{event.badge}</span>
+                  </div>
+                </motion.div>
+              ))}
+          </div>
+        </div>
+      </section>
 
       {/* PROGRAMS */}
       <section className="relative py-24 px-4 md:px-8 overflow-hidden">
@@ -229,7 +320,7 @@ export default function Index() {
                         <span className="text-[10px] tracking-[0.25em] uppercase text-primary font-bold">{p.tag}</span>
                         <h3 className="mt-1.5 text-xl md:text-2xl font-black leading-tight text-foreground group-hover:text-gradient-primary transition">{p.title}</h3>
                         <div className="mt-4 flex items-center justify-between gap-4">
-                          <p className="text-xs text-muted-foreground">{p.meta}</p>
+                          <p className="text-xs text-foreground/75">{p.meta}</p>
                           <div className="h-8 w-8 shrink-0 rounded-full border border-primary/40 grid place-items-center text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:rotate-[-45deg] transition-all duration-300">
                             <ArrowRight size={14} />
                           </div>
@@ -252,7 +343,7 @@ export default function Index() {
           <div className="relative">
             <p className="text-xs tracking-[0.3em] uppercase text-primary font-bold mb-3">System Initialization</p>
             <h2 className="text-4xl md:text-6xl font-black mb-4">Ready to <span className="text-gradient-primary">build the cloud?</span></h2>
-            <p className="text-muted-foreground max-w-xl mx-auto mb-8">
+            <p className="text-foreground/80 max-w-xl mx-auto mb-8">
               Join our driving community of student builders across HITMS. Empowering one another to become architects of tomorrow.
             </p>
             <div className="flex gap-3 justify-center flex-wrap">
@@ -274,6 +365,46 @@ const features = [
   { icon: Cpu, title: "AI & Cloud Innovation", desc: "Dive into the next-gen intersection of AI and cloud-native engineering — from Bedrock to SageMaker." },
   { icon: Users, title: "Global Network", desc: "Connect with 99K+ student builders in 35+ regions. Peers, mentors, AWS employees — all in one Slack." },
   { icon: Rocket, title: "Builder Culture", desc: "Hackathons, workshops, speaker sessions. Lead, contribute, ship — and become the architect of tomorrow." },
+];
+
+const whatWeDo = [
+  { icon: Cloud, title: "Hands-on AWS learning", desc: "Workshops, labs, and guided projects that make cloud concepts practical and memorable." },
+  { icon: Code2, title: "Real builder projects", desc: "We help students create and ship solutions that matter — not just study slides and notes." },
+  { icon: Rocket, title: "Mentorship and growth", desc: "From first steps to final launch, our community helps learners move forward with confidence." },
+  { icon: Sparkles, title: "Community and visibility", desc: "We build a supportive circle where students can showcase ideas, get feedback, and find opportunities." },
+];
+
+const whoWeAre = [
+  "A student-led community focused on AWS, cloud, AI, and innovation.",
+  "A place where beginners and aspiring builders can learn without fear of being left behind.",
+  "A network of peers, mentors, and future professionals who grow together.",
+];
+
+const featuredEvents = [
+  {
+    type: "Workshop",
+    date: "Aug 12",
+    title: "Cloud Foundations Lab",
+    desc: "A hands-on session covering core AWS services, deployment basics, and practical cloud workflows.",
+    location: "HITMS Lab",
+    badge: "Free",
+  },
+  {
+    type: "Community",
+    date: "Aug 24",
+    title: "Builder Circle Meetup",
+    desc: "Connect with members, share ideas, and discover opportunities for your next project or role.",
+    location: "Online + Campus",
+    badge: "Open",
+  },
+  {
+    type: "Hackathon",
+    date: "Sep 07",
+    title: "Innovate-A-Thon Sprint",
+    desc: "Work with peers to ship a rapid cloud solution and present your ideas to the community.",
+    location: "Innovation Hub",
+    badge: "Register",
+  },
 ];
 
 const programs = [
@@ -326,7 +457,7 @@ function ParallaxStats() {
             <div className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             <div className="relative">
               <div className="text-5xl md:text-7xl font-black font-display text-gradient-primary drop-shadow-[0_0_25px_oklch(0.769_0.165_64.5/0.5)]">{s.n}</div>
-              <div className="mt-2 text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-mono">{s.l}</div>
+              <div className="mt-2 text-[10px] tracking-[0.3em] uppercase text-foreground/75 font-mono">{s.l}</div>
             </div>
             <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
           </motion.div>
