@@ -22,13 +22,9 @@ export function usePrefetchRoutes() {
   const routes = ["/about", "/events", "/members", "/resources", "/contact"];
 
   if (typeof window !== "undefined") {
-    const connection = navigator as Navigator & {
-      connection?: {
-        saveData?: boolean;
-      };
-    };
+    const conn = (navigator as any).connection;
 
-    if (connection.connection?.saveData === false) {
+    if (conn?.saveData === false) {
       routes.forEach((route) => {
         // Use prefetch hint for better performance
         const link = document.createElement("link");

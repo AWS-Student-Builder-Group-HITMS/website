@@ -169,8 +169,14 @@ export function useMetaTags(config: {
     const { title, description, imageUrl, path } = config;
     const pageUrl = `${window.location.origin}${path}`;
 
+    interface MetaTag {
+      property?: string;
+      name?: string;
+      content: string;
+    }
+
     // Update Open Graph tags
-    const ogTags = [
+    const ogTags: MetaTag[] = [
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:url", content: pageUrl },
@@ -182,7 +188,7 @@ export function useMetaTags(config: {
     }
 
     // Update Twitter tags
-    const twitterTags = [
+    const twitterTags: MetaTag[] = [
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
@@ -193,7 +199,7 @@ export function useMetaTags(config: {
     }
 
     [...ogTags, ...twitterTags].forEach((tag) => {
-      const isPropertyTag = "property" in tag;
+      const isPropertyTag = !!tag.property;
       const selector = isPropertyTag
         ? `meta[property="${tag.property}"]`
         : `meta[name="${tag.name}"]`;
@@ -201,9 +207,9 @@ export function useMetaTags(config: {
 
       if (!metaTag) {
         metaTag = document.createElement("meta");
-        if (isPropertyTag) {
+        if (isPropertyTag && tag.property) {
           metaTag.setAttribute("property", tag.property);
-        } else {
+        } else if (tag.name) {
           metaTag.setAttribute("name", tag.name);
         }
         document.head.appendChild(metaTag);
