@@ -51,9 +51,7 @@ export function HeroPageLoader() {
         transition={{ delay: 0.5 }}
         className="absolute bottom-20 text-center"
       >
-        <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary">
-          Initializing
-        </p>
+        <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary">Initializing</p>
         <motion.p
           animate={{ opacity: [0.3, 1, 0.3] }}
           transition={{ duration: 1.5, repeat: Infinity }}
@@ -85,7 +83,14 @@ export function EventsPageLoader() {
             >
               {/* Timeline dot */}
               <motion.div
-                animate={{ scale: [1, 1.4, 1], backgroundColor: ["oklch(0.769 0.165 64.5)", "oklch(0.88 0.12 78)", "oklch(0.769 0.165 64.5)"] }}
+                animate={{
+                  scale: [1, 1.4, 1],
+                  backgroundColor: [
+                    "oklch(0.769 0.165 64.5)",
+                    "oklch(0.88 0.12 78)",
+                    "oklch(0.769 0.165 64.5)",
+                  ],
+                }}
                 transition={{ duration: 8, repeat: Infinity, delay: i * 0.5 }}
                 className="w-3 h-3 rounded-full bg-primary flex-shrink-0"
               />
@@ -194,10 +199,7 @@ export function ResourcesPageLoader() {
       <motion.div className="w-40 space-y-6">
         {/* Data packets flowing */}
         {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            className="flex items-center gap-3"
-          >
+          <motion.div key={i} className="flex items-center gap-3">
             {/* Flowing packet */}
             <motion.div
               animate={{ x: [0, 120, 0] }}

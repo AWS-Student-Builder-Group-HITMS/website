@@ -74,6 +74,10 @@ interface ContactFormPayload {
   message: string;
 }
 
+interface ResendEmailResult {
+  error?: unknown;
+}
+
 const validateEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
@@ -99,20 +103,14 @@ const validateContactForm = (data: unknown): data is ContactFormPayload => {
   );
 };
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-  );
+  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
   );
 
   // Handle OPTIONS request
@@ -224,7 +222,8 @@ export default async function handler(
     if (!resend) {
       return res.status(200).json({
         success: true,
-        message: "Your message was received locally. Configure RESEND_API_KEY to enable email delivery.",
+        message:
+          "Your message was received locally. Configure RESEND_API_KEY to enable email delivery.",
         data: {
           id: "local-dev-preview",
           timestamp: new Date().toISOString(),
@@ -233,31 +232,34 @@ export default async function handler(
     }
 
     // Send admin notification
-    const adminResult = (await resend.emails.send({
+    const adminResult = await resend.emails.send({
       from: "AWS SBG Contact Form <onboarding@resend.dev>",
       to: process.env.RESEND_CONTACT_EMAIL || "ahmedhussain12566521@gmail.com",
       replyTo: email,
       subject: `📬 Contact Form: ${subject}`,
       html: adminHtmlContent,
-    })) as any;
+    });
+    const adminResultData = adminResult as ResendEmailResult;
 
-    if (adminResult?.error) {
-      console.error("Admin email error:", adminResult.error);
+    if (adminResultData?.error) {
+      console.error("Admin email error:", adminResultData.error);
       return res.status(500).json({
         error: "Failed to send message. Please try again later.",
       });
     }
 
     // Send user confirmation
-    await resend.emails.send({
-      from: "AWS SBG HITMS <onboarding@resend.dev>",
-      to: email,
-      subject: "✨ We received your message",
-      html: userHtmlContent,
-    }).catch((err) => {
-      console.error("User confirmation email error:", err);
-      // Don't fail the request if confirmation email fails
-    });
+    await resend.emails
+      .send({
+        from: "AWS SBG HITMS <onboarding@resend.dev>",
+        to: email,
+        subject: "✨ We received your message",
+        html: userHtmlContent,
+      })
+      .catch((error: unknown) => {
+        console.error("User confirmation email error:", error);
+        // Don't fail the request if confirmation email fails
+      });
 
     return res.status(200).json({
       success: true,

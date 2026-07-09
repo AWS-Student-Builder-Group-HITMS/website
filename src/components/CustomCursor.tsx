@@ -12,8 +12,10 @@ export function CustomCursor() {
   const dot = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let tx = -100, ty = -100;
-    let rx = -100, ry = -100;
+    let tx = -100,
+      ty = -100;
+    let rx = -100,
+      ry = -100;
     let raf = 0;
 
     const onMove = (e: PointerEvent) => {
@@ -25,7 +27,8 @@ export function CustomCursor() {
     const loop = () => {
       rx += (tx - rx) * 0.2;
       ry += (ty - ry) * 0.2;
-      if (ring.current) ring.current.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+      if (ring.current)
+        ring.current.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
       raf = requestAnimationFrame(loop);
     };
 

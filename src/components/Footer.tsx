@@ -12,24 +12,45 @@ export function Footer() {
             <img src={logo} className="h-10 w-10 rounded-md" alt="AWS SBG HITMS" />
             <div>
               <p className="font-bold">AWS SBG HITMS</p>
-              <p className="text-xs text-muted-foreground tracking-widest uppercase">Student Builder Group</p>
+              <p className="text-xs text-muted-foreground tracking-widest uppercase">
+                Student Builder Group
+              </p>
             </div>
           </div>
           <p className="text-sm text-muted-foreground">
-            Same community. Stronger vision. Bigger future. Empowering the next generation of cloud builders.
+            Same community. Stronger vision. Bigger future. Empowering the next generation of cloud
+            builders.
           </p>
         </div>
         <div>
           <h4 className="font-bold mb-3 text-sm tracking-widest uppercase text-primary">Explore</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><Link to="/about" className="hover:text-primary">About</Link></li>
-            <li><Link to="/events" className="hover:text-primary">Events</Link></li>
-            <li><Link to="/members" className="hover:text-primary">Members</Link></li>
-            <li><Link to="/resources" className="hover:text-primary">Resources</Link></li>
+            <li>
+              <Link to="/about" className="hover:text-primary">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/events" className="hover:text-primary">
+                Events
+              </Link>
+            </li>
+            <li>
+              <Link to="/members" className="hover:text-primary">
+                Members
+              </Link>
+            </li>
+            <li>
+              <Link to="/resources" className="hover:text-primary">
+                Resources
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
-          <h4 className="font-bold mb-3 text-sm tracking-widest uppercase text-primary">Programs</h4>
+          <h4 className="font-bold mb-3 text-sm tracking-widest uppercase text-primary">
+            Programs
+          </h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>Cloud Workshops</li>
             <li>AI/ML Bootcamps</li>
@@ -41,7 +62,11 @@ export function Footer() {
           <h4 className="font-bold mb-3 text-sm tracking-widest uppercase text-primary">Connect</h4>
           <div className="flex gap-3">
             {[Github, Linkedin, MessageCircle, Mail].map((Icon, i) => (
-              <a key={i} href="#" className="h-10 w-10 grid place-items-center rounded-md border border-border hover:border-primary hover:text-primary hover:shadow-[0_0_20px_oklch(0.769_0.165_64.5/0.4)] transition">
+              <a
+                key={i}
+                href="#"
+                className="h-10 w-10 grid place-items-center rounded-md border border-border hover:border-primary hover:text-primary hover:shadow-[0_0_20px_oklch(0.769_0.165_64.5/0.4)] transition"
+              >
                 <Icon size={16} />
               </a>
             ))}
@@ -49,7 +74,8 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border/60 py-5 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} AWS Student Builder Group · HITMS Chapter. Built by students, for builders.
+        © {new Date().getFullYear()} AWS Student Builder Group · HITMS Chapter. Built by students,
+        for builders.
       </div>
     </footer>
   );

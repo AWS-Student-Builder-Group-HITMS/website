@@ -31,9 +31,7 @@ export function PageLoader() {
           transition={{ delay: 0.3 }}
           className="text-center"
         >
-          <p className="text-sm font-medium text-primary tracking-widest uppercase">
-            Loading
-          </p>
+          <p className="text-sm font-medium text-primary tracking-widest uppercase">Loading</p>
           <motion.p
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 1.5, repeat: Infinity }}

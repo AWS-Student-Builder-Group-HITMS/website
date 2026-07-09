@@ -23,10 +23,7 @@ export interface CloudinaryOptions {
  * @param options - Transformation options
  * @returns Optimized Cloudinary URL
  */
-export function getCloudinaryUrl(
-  publicId: string,
-  options: CloudinaryOptions = {}
-): string {
+export function getCloudinaryUrl(publicId: string, options: CloudinaryOptions = {}): string {
   if (!CLOUDINARY_CLOUD_NAME) {
     console.warn("VITE_CLOUDINARY_CLOUD_NAME is not set. Returning original publicId.");
     return publicId;
@@ -43,7 +40,7 @@ export function getCloudinaryUrl(
     background,
   } = options;
 
-  let transformations = [];
+  const transformations = [];
 
   // Add dimensions
   if (width || height) {
@@ -81,7 +78,7 @@ export function getCloudinaryUrl(
 export function getResponsiveImage(
   publicId: string,
   baseSizes: number = 800,
-  options: CloudinaryOptions = {}
+  options: CloudinaryOptions = {},
 ) {
   const sizes = [320, 640, 960, 1280, baseSizes];
 

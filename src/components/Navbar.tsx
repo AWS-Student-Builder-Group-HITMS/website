@@ -29,7 +29,9 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 inset-x-0 z-50 backdrop-blur-xl transition-all duration-500 ${
-        scrolled ? "bg-background/85 border-b border-primary/30 shadow-[0_8px_40px_-12px_oklch(0.769_0.165_64.5/0.35)]" : "bg-background/40 border-b border-transparent"
+        scrolled
+          ? "bg-background/85 border-b border-primary/30 shadow-[0_8px_40px_-12px_oklch(0.769_0.165_64.5/0.35)]"
+          : "bg-background/40 border-b border-transparent"
       }`}
     >
       {/* scan line on top edge */}
@@ -41,7 +43,11 @@ export function Navbar() {
           <div className="relative">
             <div className="absolute -inset-1 bg-primary/40 blur-xl rounded-full opacity-70 group-hover:opacity-100 transition animate-glow-pulse" />
             <div className="absolute -inset-px rounded-md bg-gradient-to-tr from-primary via-primary-glow to-accent opacity-80 blur-[2px] group-hover:opacity-100 transition" />
-            <img src={logo} alt="AWS SBG HITMS" className="relative h-10 w-10 rounded-md object-cover ring-1 ring-primary/40 group-hover:rotate-[-6deg] group-hover:scale-110 transition-transform duration-500" />
+            <img
+              src={logo}
+              alt="AWS SBG HITMS"
+              className="relative h-10 w-10 rounded-md object-cover ring-1 ring-primary/40 group-hover:rotate-[-6deg] group-hover:scale-110 transition-transform duration-500"
+            />
           </div>
         </Link>
 
@@ -73,7 +79,11 @@ export function Navbar() {
 
         <div className="hidden md:block w-10" aria-hidden />
 
-        <button className="md:hidden text-foreground" onClick={() => setOpen(!open)} aria-label="menu">
+        <button
+          className="md:hidden text-foreground"
+          onClick={() => setOpen(!open)}
+          aria-label="menu"
+        >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>

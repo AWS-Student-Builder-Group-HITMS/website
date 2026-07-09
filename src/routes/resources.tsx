@@ -7,7 +7,8 @@ import { useMeta } from "@/hooks/useMeta";
 export default function Resources() {
   useMeta({
     title: "Resources & Learning Paths — AWS SBG HITMS",
-    description: "Curated AWS learning paths, labs, certification prep and tools for student builders.",
+    description:
+      "Curated AWS learning paths, labs, certification prep and tools for student builders.",
   });
 
   return (
@@ -23,7 +24,9 @@ export default function Resources() {
           <motion.a
             href="#"
             key={r.title}
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: i * 0.07 }}
             whileHover={{ y: -6 }}
             className="group relative p-6 rounded-xl border border-border bg-card overflow-hidden block"
@@ -33,7 +36,9 @@ export default function Resources() {
               <div className="h-12 w-12 rounded-md bg-primary/10 border border-primary/30 grid place-items-center text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition">
                 <r.icon size={22} />
               </div>
-              <span className="text-[10px] tracking-[0.25em] uppercase text-primary font-bold">{r.tag}</span>
+              <span className="text-[10px] tracking-[0.25em] uppercase text-primary font-bold">
+                {r.tag}
+              </span>
               <h3 className="text-xl font-bold mt-2">{r.title}</h3>
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{r.desc}</p>
             </div>
@@ -45,10 +50,40 @@ export default function Resources() {
 }
 
 const resources = [
-  { icon: Cloud, tag: "FOUNDATIONS", title: "AWS Cloud Practitioner Path", desc: "End-to-end learning path to crush your CCP exam — includes flashcards, labs and a voucher." },
-  { icon: Code2, tag: "BUILD", title: "Student Hub Curriculum", desc: "Project-based curricula for full-stack cloud builders, from S3 to serverless." },
-  { icon: Brain, tag: "AI / ML", title: "GenAI with Bedrock", desc: "Build RAG apps, agents and copilots powered by Amazon Bedrock and Titan." },
-  { icon: Wrench, tag: "TOOLS", title: "AWS Credits & Vouchers", desc: "Exclusive AWS credits, Udemy licenses and certification vouchers for active members." },
-  { icon: GraduationCap, tag: "MENTORSHIP", title: "1:1 with AWS Experts", desc: "Book mentorship sessions with AWS Solutions Architects and Developer Advocates." },
-  { icon: BookOpen, tag: "READING", title: "Cloud Architecture Library", desc: "Curated whitepapers, blog series and reference architectures." },
+  {
+    icon: Cloud,
+    tag: "FOUNDATIONS",
+    title: "AWS Cloud Practitioner Path",
+    desc: "End-to-end learning path to crush your CCP exam — includes flashcards, labs and a voucher.",
+  },
+  {
+    icon: Code2,
+    tag: "BUILD",
+    title: "Student Hub Curriculum",
+    desc: "Project-based curricula for full-stack cloud builders, from S3 to serverless.",
+  },
+  {
+    icon: Brain,
+    tag: "AI / ML",
+    title: "GenAI with Bedrock",
+    desc: "Build RAG apps, agents and copilots powered by Amazon Bedrock and Titan.",
+  },
+  {
+    icon: Wrench,
+    tag: "TOOLS",
+    title: "AWS Credits & Vouchers",
+    desc: "Exclusive AWS credits, Udemy licenses and certification vouchers for active members.",
+  },
+  {
+    icon: GraduationCap,
+    tag: "MENTORSHIP",
+    title: "1:1 with AWS Experts",
+    desc: "Book mentorship sessions with AWS Solutions Architects and Developer Advocates.",
+  },
+  {
+    icon: BookOpen,
+    tag: "READING",
+    title: "Cloud Architecture Library",
+    desc: "Curated whitepapers, blog series and reference architectures.",
+  },
 ];

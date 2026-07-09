@@ -22,7 +22,9 @@ export default function About() {
         {pillars.map((p, i) => (
           <motion.div
             key={p.title}
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
             whileHover={{ y: -6 }}
             className="relative p-7 rounded-xl border border-border bg-card overflow-hidden group"
@@ -44,13 +46,17 @@ export default function About() {
           {timeline.map((t, i) => (
             <motion.div
               key={t.year}
-              initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               className="relative"
             >
               <div className="absolute -left-[31px] top-1.5 h-2 w-2 rounded-full bg-primary ring-4 ring-background" />
               <div className="text-sm font-bold text-primary">{t.year}</div>
               <h3 className="text-lg font-bold mt-1">{t.title}</h3>
-              <p className="text-sm text-muted-foreground mt-1 max-w-xl leading-relaxed">{t.desc}</p>
+              <p className="text-sm text-muted-foreground mt-1 max-w-xl leading-relaxed">
+                {t.desc}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -60,13 +66,37 @@ export default function About() {
 }
 
 const pillars = [
-  { icon: Target, title: "Our Mission", desc: "Empower students to understand Cloud, Serverless and modern building systems through local, hands-on, peer-to-peer workshops." },
-  { icon: Star, title: "Our Vision", desc: "Build a persistent local hub of student engineering talent that connects directly with global tech circles." },
-  { icon: Heart, title: "Our Values", desc: "Inclusion, builder culture, collaborative building, continuous learning and open exchange." }
+  {
+    icon: Target,
+    title: "Our Mission",
+    desc: "Empower students to understand Cloud, Serverless and modern building systems through local, hands-on, peer-to-peer workshops.",
+  },
+  {
+    icon: Star,
+    title: "Our Vision",
+    desc: "Build a persistent local hub of student engineering talent that connects directly with global tech circles.",
+  },
+  {
+    icon: Heart,
+    title: "Our Values",
+    desc: "Inclusion, builder culture, collaborative building, continuous learning and open exchange.",
+  },
 ];
 
 const timeline = [
-  { year: "2025", title: "AWS Cloud Club Launched", desc: "We started as an AWS Cloud Club, laying down the early bricks of cloud education inside the university." },
-  { year: "2026", title: "Community Evolution", desc: "With growing programs and stronger industry relations, we transitions into the new AWS SBG era." },
-  { year: "2026", title: "The Next Era", desc: "Same local team with robust developer tracks, larger speaker networks, and specialized cloud hackathons." }
+  {
+    year: "2025",
+    title: "AWS Cloud Club Launched",
+    desc: "We started as an AWS Cloud Club, laying down the early bricks of cloud education inside the university.",
+  },
+  {
+    year: "2026",
+    title: "Community Evolution",
+    desc: "With growing programs and stronger industry relations, we transitions into the new AWS SBG era.",
+  },
+  {
+    year: "2026",
+    title: "The Next Era",
+    desc: "Same local team with robust developer tracks, larger speaker networks, and specialized cloud hackathons.",
+  },
 ];

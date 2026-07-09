@@ -20,15 +20,23 @@ export function useRoutePreload() {
  */
 export function usePrefetchRoutes() {
   const routes = ["/about", "/events", "/members", "/resources", "/contact"];
-  
-  if (typeof window !== "undefined" && navigator.connection?.saveData === false) {
-    routes.forEach((route) => {
-      // Use prefetch hint for better performance
-      const link = document.createElement("link");
-      link.rel = "prefetch";
-      link.as = "fetch";
-      link.href = route;
-      document.head.appendChild(link);
-    });
+
+  if (typeof window !== "undefined") {
+    const connection = navigator as Navigator & {
+      connection?: {
+        saveData?: boolean;
+      };
+    };
+
+    if (connection.connection?.saveData === false) {
+      routes.forEach((route) => {
+        // Use prefetch hint for better performance
+        const link = document.createElement("link");
+        link.rel = "prefetch";
+        link.as = "fetch";
+        link.href = route;
+        document.head.appendChild(link);
+      });
+    }
   }
 }

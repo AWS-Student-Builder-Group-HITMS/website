@@ -17,21 +17,25 @@ export function useJsonLd(config: SchemaConfig) {
   const { title, description, imageUrl, path } = config;
 
   useEffect(() => {
+    const normalizedPath = path.startsWith("/") ? path : `/${path}`;
     const siteUrl = window.location.origin;
-    const pageUrl = `${siteUrl}${path}`;
+    const pageUrl = `${siteUrl}${normalizedPath}`;
+    const siteName = "AWS Student Builder Group HITMS";
+    const organizationId = `${siteUrl}/#organization`;
+    const websiteId = `${siteUrl}/#website`;
+    const breadcrumbId = `${pageUrl}#breadcrumb`;
 
-    // Organization schema
     const organizationSchema = {
-      "@context": "https://schema.org",
       "@type": "Organization",
-      name: "AWS Student Builder Group HITMS",
+      "@id": organizationId,
+      name: siteName,
       description: "Hands-on cloud, AI and builder culture for students",
       url: siteUrl,
       logo: `${siteUrl}/src/assets/aws-hitms-logo.jpeg`,
       sameAs: [
         "https://aws.amazon.com/studentbuildergroup",
-        "https://www.instagram.com",
-        "https://www.linkedin.com",
+        "https://www.instagram.com/awssbghitms",
+        "https://www.linkedin.com/company/aws-student-builder-group-hitms",
       ],
       contactPoint: {
         "@type": "ContactPoint",
@@ -46,18 +50,17 @@ export function useJsonLd(config: SchemaConfig) {
       },
     };
 
-    // Breadcrumb navigation schema
-    const pathSegments = path
+    const pathSegments = normalizedPath
       .split("/")
-      .filter((s) => s)
+      .filter((segment) => segment)
       .map((segment, index, arr) => ({
         name: segment.charAt(0).toUpperCase() + segment.slice(1),
         item: `${siteUrl}/${arr.slice(0, index + 1).join("/")}`,
       }));
 
     const breadcrumbSchema = {
-      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": breadcrumbId,
       itemListElement: [
         {
           "@type": "ListItem",
@@ -74,17 +77,17 @@ export function useJsonLd(config: SchemaConfig) {
       ],
     };
 
-    // Page schema
     const pageSchema = {
-      "@context": "https://schema.org",
       "@type": "WebPage",
-      name: title,
-      description: description,
+      "@id": `${pageUrl}#webpage`,
       url: pageUrl,
+      name: title,
+      description,
       isPartOf: {
-        "@type": "WebSite",
-        name: "AWS Student Builder Group HITMS",
-        url: siteUrl,
+        "@id": websiteId,
+      },
+      breadcrumb: {
+        "@id": breadcrumbId,
       },
       primaryImageOfPage: imageUrl
         ? {
@@ -94,54 +97,61 @@ export function useJsonLd(config: SchemaConfig) {
         : undefined,
       datePublished: new Date().toISOString().split("T")[0],
       author: {
-        "@type": "Organization",
-        name: "AWS Student Builder Group HITMS",
+        "@id": organizationId,
       },
     };
 
-    // Event schema (for events page)
-    const eventSchema =
-      path === "/events"
+    const websiteSchema = {
+      "@type": "WebSite",
+      "@id": websiteId,
+      name: siteName,
+      url: siteUrl,
+      description: "Hands-on cloud, AI and builder culture for students",
+      publisher: {
+        "@id": organizationId,
+      },
+    };
+
+    const eventSchema: Record<string, unknown> | null =
+      normalizedPath === "/events"
         ? {
-            "@context": "https://schema.org",
             "@type": "EventSeries",
             name: "AWS Student Builder Group Events",
-            description:
-              "Regular cloud building workshops, talks, and networking events",
+            description: "Regular cloud building workshops, talks, and networking events",
             organizer: {
-              "@type": "Organization",
-              name: "AWS Student Builder Group HITMS",
+              "@id": organizationId,
             },
           }
         : null;
 
-    // Create and append script tags
-    const schemas = [organizationSchema, breadcrumbSchema, pageSchema];
-    if (eventSchema) schemas.push(eventSchema);
+    const schemaGraph: Array<Record<string, unknown>> = [
+      organizationSchema,
+      websiteSchema,
+      breadcrumbSchema,
+      pageSchema,
+    ];
+    if (eventSchema) schemaGraph.push(eventSchema);
 
-    const scriptIds = schemas.map((schema, index) => {
-      const scriptId = `schema-${index}`;
-      let script = document.getElementById(scriptId);
+    const fullSchema = {
+      "@context": "https://schema.org",
+      "@graph": schemaGraph,
+    };
 
-      if (!script) {
-        script = document.createElement("script");
-        script.id = scriptId;
-        script.type = "application/ld+json";
-        script.textContent = JSON.stringify(schema);
-        document.head.appendChild(script);
-      } else {
-        script.textContent = JSON.stringify(schema);
-      }
+    const scriptId = "site-jsonld-schema";
+    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
 
-      return scriptId;
-    });
+    if (!script) {
+      script = document.createElement("script");
+      script.id = scriptId;
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+
+    script.textContent = JSON.stringify(fullSchema, null, 2);
 
     return () => {
-      // Cleanup on unmount
-      scriptIds.forEach((id) => {
-        const script = document.getElementById(id);
-        if (script) script.remove();
-      });
+      const currentScript = document.getElementById(scriptId);
+      if (currentScript) currentScript.remove();
     };
   }, [title, description, imageUrl, path]);
 }
@@ -183,12 +193,15 @@ export function useMetaTags(config: {
     }
 
     [...ogTags, ...twitterTags].forEach((tag) => {
-      const selector = tag.property ? `meta[property="${tag.property}"]` : `meta[name="${tag.name}"]`;
+      const isPropertyTag = "property" in tag;
+      const selector = isPropertyTag
+        ? `meta[property="${tag.property}"]`
+        : `meta[name="${tag.name}"]`;
       let metaTag = document.querySelector(selector);
 
       if (!metaTag) {
         metaTag = document.createElement("meta");
-        if (tag.property) {
+        if (isPropertyTag) {
           metaTag.setAttribute("property", tag.property);
         } else {
           metaTag.setAttribute("name", tag.name);

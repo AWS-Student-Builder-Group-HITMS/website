@@ -38,7 +38,7 @@ export function useContactForm() {
       });
 
       const contentType = response.headers.get("content-type") || "";
-      let result: any = {};
+      let result: unknown = {};
 
       if (contentType.includes("application/json")) {
         result = await response.json();
@@ -52,7 +52,12 @@ export function useContactForm() {
       }
 
       if (!response.ok) {
-        throw new Error(result.error || "Failed to send message");
+        const errorMessage =
+          typeof result === "object" && result !== null && "error" in result
+            ? (result as { error?: unknown }).error
+            : undefined;
+
+        throw new Error(typeof errorMessage === "string" ? errorMessage : "Failed to send message");
       }
 
       setState({
@@ -63,8 +68,7 @@ export function useContactForm() {
 
       return { success: true, data: result };
     } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : "An unexpected error occurred";
+      const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
 
       setState({
         isLoading: false,

@@ -5,7 +5,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
-import { MessageCircle, Send, Linkedin, Instagram, Users, CalendarDays, CheckCircle, AlertCircle } from "lucide-react";
+import {
+  MessageCircle,
+  Send,
+  Linkedin,
+  Instagram,
+  Users,
+  CalendarDays,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
 import { useMeta } from "@/hooks/useMeta";
 import { useContactForm, type ContactFormInput } from "@/hooks/useContactForm";
 import { getCloudinaryUrl } from "@/lib/cloudinary";
@@ -14,17 +23,27 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 const WHATSAPP_URL = "https://chat.whatsapp.com/FgyyG0kLNIKIovBwenLagq";
-const INSTAGRAM_URL = "https://www.instagram.com/awssbghitms?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
+const INSTAGRAM_URL =
+  "https://www.instagram.com/awssbghitms?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
 const LINKEDIN_URL = "https://www.linkedin.com/company/aws-student-builder-group-hitms";
 const MEETUP_URL = "https://www.meetup.com/aws-sbg-at-hitms/";
 const QR_PATH = getCloudinaryUrl("aws-sbg-hitms/whatsapp-qr", { width: 400, quality: "auto" });
 
 // Form validation schema
 const contactFormSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be less than 100 characters"),
   email: z.string().email("Please enter a valid email address"),
-  subject: z.string().min(5, "Subject must be at least 5 characters").max(200, "Subject must be less than 200 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters").max(5000, "Message must be less than 5000 characters"),
+  subject: z
+    .string()
+    .min(5, "Subject must be at least 5 characters")
+    .max(200, "Subject must be less than 200 characters"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(5000, "Message must be less than 5000 characters"),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -35,7 +54,12 @@ export default function Contact() {
     description: "Get in touch with AWS Student Builder Group HITMS leaders.",
   });
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
   });
 
@@ -63,7 +87,6 @@ export default function Contact() {
 
       {/* Main Grid: QR + Info */}
       <section className="max-w-6xl mx-auto px-4 md:px-8 pt-16 -mt-4 mb-10 grid md:grid-cols-[1fr_1.5fr] gap-6">
-
         {/* Left: WhatsApp QR Card */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -75,9 +98,13 @@ export default function Contact() {
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
 
           <div className="relative text-center">
-            <p className="text-[10px] tracking-[0.3em] uppercase text-primary font-bold mb-1">WhatsApp Community</p>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-primary font-bold mb-1">
+              WhatsApp Community
+            </p>
             <h2 className="text-xl font-black tracking-tight">Scan to Join</h2>
-            <p className="text-xs text-muted-foreground mt-1 max-w-xs">Scan the QR code or tap the button below to join our WhatsApp community.</p>
+            <p className="text-xs text-muted-foreground mt-1 max-w-xs">
+              Scan the QR code or tap the button below to join our WhatsApp community.
+            </p>
           </div>
 
           {/* QR Image */}
@@ -125,10 +152,15 @@ export default function Contact() {
               <div className="absolute inset-0 aurora-bg opacity-60 pointer-events-none" />
               <div className="absolute -top-px inset-x-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
               <div className="relative">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-primary font-bold mb-2">Direct Line</p>
-                <h3 className="text-2xl md:text-3xl font-black tracking-tight font-display">Send us a Message</h3>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-primary font-bold mb-2">
+                  Direct Line
+                </p>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tight font-display">
+                  Send us a Message
+                </h3>
                 <p className="text-sm text-muted-foreground mt-2 max-w-md">
-                  Fill out the form below and we'll get back to you within 24-48 hours. For urgent matters, reach us on WhatsApp.
+                  Fill out the form below and we'll get back to you within 24-48 hours. For urgent
+                  matters, reach us on WhatsApp.
                 </p>
               </div>
             </motion.button>
@@ -144,11 +176,16 @@ export default function Contact() {
               <div className="relative">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-primary font-bold mb-1">Message Form</p>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-primary font-bold mb-1">
+                      Message Form
+                    </p>
                     <h3 className="text-lg font-black tracking-tight">Contact Our Team</h3>
                   </div>
                   <button
-                    onClick={() => { setShowForm(false); resetForm(); }}
+                    onClick={() => {
+                      setShowForm(false);
+                      resetForm();
+                    }}
                     className="text-muted-foreground hover:text-foreground transition"
                   >
                     ✕
@@ -171,7 +208,9 @@ export default function Contact() {
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     {/* Name Field */}
                     <div>
-                      <label className="text-xs font-semibold text-foreground mb-2 block">Name *</label>
+                      <label className="text-xs font-semibold text-foreground mb-2 block">
+                        Name *
+                      </label>
                       <Input
                         {...register("name")}
                         placeholder="Your name"
@@ -185,7 +224,9 @@ export default function Contact() {
 
                     {/* Email Field */}
                     <div>
-                      <label className="text-xs font-semibold text-foreground mb-2 block">Email *</label>
+                      <label className="text-xs font-semibold text-foreground mb-2 block">
+                        Email *
+                      </label>
                       <Input
                         {...register("email")}
                         type="email"
@@ -200,7 +241,9 @@ export default function Contact() {
 
                     {/* Subject Field */}
                     <div>
-                      <label className="text-xs font-semibold text-foreground mb-2 block">Subject *</label>
+                      <label className="text-xs font-semibold text-foreground mb-2 block">
+                        Subject *
+                      </label>
                       <Input
                         {...register("subject")}
                         placeholder="What's this about?"
@@ -214,7 +257,9 @@ export default function Contact() {
 
                     {/* Message Field */}
                     <div>
-                      <label className="text-xs font-semibold text-foreground mb-2 block">Message *</label>
+                      <label className="text-xs font-semibold text-foreground mb-2 block">
+                        Message *
+                      </label>
                       <Textarea
                         {...register("message")}
                         placeholder="Tell us more..."
@@ -280,7 +325,9 @@ export default function Contact() {
                   <Icon size={16} />
                 </div>
                 <div className="relative min-w-0">
-                  <p className="text-[9px] tracking-[0.2em] uppercase text-primary font-bold leading-none mb-1">{label}</p>
+                  <p className="text-[9px] tracking-[0.2em] uppercase text-primary font-bold leading-none mb-1">
+                    {label}
+                  </p>
                   <p className="text-xs font-semibold truncate">{sub}</p>
                 </div>
               </motion.a>
