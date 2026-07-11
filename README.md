@@ -15,7 +15,7 @@ the club logo.
 | Node.js | 20 or newer | https://nodejs.org (LTS) |
 | npm     | comes with Node | — |
 
-> npm is included with Node.js — no separate install required.
+> npm is included with Node.js  no separate install required.
 
 ---
 
