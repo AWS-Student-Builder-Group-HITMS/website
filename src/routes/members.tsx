@@ -33,6 +33,7 @@ type Member = {
   github?: string;
   linkedin?: string;
   portfolio?: string;
+  behance?: string;
   badge?: string;
 };
 type Team = {
@@ -212,9 +213,14 @@ const teams: Team[] = [
     accent: "from-fuchsia-500/35 to-primary/30",
     glow: "oklch(0.7 0.25 330 / 0.5)",
     lead: {
-      name: "Fahad Ahmed",
+      name: "Fahad Shaikh",
       role: "Lead · Creative",
       image: "/members/creative/Fahad Ahmed.jpg",
+      roll: "24BSSW013",
+      bio: "A UI/UX designer and Computer Science student passionate about crafting clean, user-centered digital experiences. I specialize in balancing aesthetics with usability to build modern websites and mobile apps. Driven by intellectual curiosity and a commitment to creating impactful products while growing my freelance career.",
+      linkedin:
+        "https://www.linkedin.com/in/fahad-shaikh-21b944245?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      behance: "https://www.behance.net/fahadahmed100",
     },
     members: [
       {
@@ -609,33 +615,40 @@ function MemberCard({
       }`}
     >
       <div
-        className="absolute -bottom-16 -right-16 h-40 w-40 rounded-full blur-3xl opacity-40 group-hover:opacity-80 transition duration-500"
+        className="absolute -bottom-16 -right-16 h-40 w-40 rounded-full blur-3xl opacity-40 group-hover:opacity-80 transition duration-500 pointer-events-none"
         style={{ background: team.glow }}
       />
 
-      {/* Photo area — original crop restored so faces don't get cut off */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden shrink-0">
-        {/* Gradient + initials — fallback when no image or image fails */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${team.accent} opacity-60`} />
-        {(!m.image || imgFailed) && (
-          <div className="absolute inset-0 grid place-items-center text-4xl font-black font-display text-primary-foreground/80">
-            {initialsOf(m.name)}
-          </div>
-        )}
+      {/* Avatar — fixed-size circle, identical for every card so photos never look uneven */}
+      <div className="relative pt-6 sm:pt-7 pb-1 flex flex-col items-center shrink-0">
+        <div
+          className="relative h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 rounded-full overflow-hidden ring-4 ring-primary/25 shrink-0"
+          style={{ boxShadow: `0 0 26px ${team.glow}` }}
+        >
+          {/* Gradient background always present (fallback base) */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${team.accent}`} />
 
-        {/* Photo — covers gradient+initials when loaded */}
-        {m.image && !imgFailed && (
-          <img
-            src={m.image}
-            alt={m.name}
-            onError={() => setImgFailed(true)}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        )}
+          {/* Initials shown ONLY when image is absent or failed */}
+          {(!m.image || imgFailed) && (
+            <div className="absolute inset-0 grid place-items-center text-2xl sm:text-3xl font-black font-display text-primary-foreground/90">
+              {initialsOf(m.name)}
+            </div>
+          )}
 
-        {/* Corner badge — top-left, floats over the photo (Lead and/or Built This Website) */}
+          {/* Photo — strictly clipped to the circle by the parent's overflow-hidden */}
+          {m.image && !imgFailed && (
+            <img
+              src={m.image}
+              alt={m.name}
+              onError={() => setImgFailed(true)}
+              className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+          )}
+        </div>
+
+        {/* Badges — sit below the circle, centered, so they never overlap the face */}
         {(lead || m.badge) && (
-          <div className="absolute top-2 left-2 z-10 flex flex-col items-start gap-1">
+          <div className="mt-2 flex flex-col items-center gap-1">
             {lead && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-[8px] tracking-widest uppercase font-black shadow-md">
                 <Crown size={9} /> Lead
@@ -648,8 +661,6 @@ function MemberCard({
             )}
           </div>
         )}
-
-        <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-card to-transparent" />
       </div>
 
       {/* Text block — name always starts here, so all cards line up regardless of badges */}
@@ -685,7 +696,19 @@ function MemberCard({
               <Linkedin size={14} />
             </a>
           )}
-          {m.portfolio && (
+          {m.behance && (
+            <a
+              href={m.behance}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              data-hover
+              className="h-8 w-8 grid place-items-center rounded-md border border-border hover:border-primary hover:text-primary transition"
+            >
+              <Palette size={14} />
+            </a>
+          )}
+          {m.portfolio && !m.behance && (
             <a
               href={m.portfolio}
               target="_blank"
@@ -697,7 +720,7 @@ function MemberCard({
               <Globe size={14} />
             </a>
           )}
-          {!m.github && !m.linkedin && !m.portfolio && (
+          {!m.github && !m.linkedin && !m.portfolio && !m.behance && (
             <span className="h-8 w-8 grid place-items-center rounded-md border border-border text-muted-foreground/50">
               <Twitter size={14} />
             </span>
@@ -738,7 +761,7 @@ function MemberModal({
   onClose: () => void;
 }) {
   const [imgFailed, setImgFailed] = useState(false);
-  const hasLinks = member.github || member.linkedin || member.portfolio;
+  const hasLinks = member.github || member.linkedin || member.portfolio || member.behance;
 
   return (
     <motion.div
@@ -871,7 +894,18 @@ function MemberModal({
                         <Linkedin size={13} /> LinkedIn
                       </a>
                     )}
-                    {member.portfolio && (
+                    {member.behance && (
+                      <a
+                        href={member.behance}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-hover
+                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-primary/40 bg-primary/10 text-[10px] tracking-widest uppercase font-bold text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                      >
+                        <Palette size={13} /> Behance
+                      </a>
+                    )}
+                    {member.portfolio && !member.behance && (
                       <a
                         href={member.portfolio}
                         target="_blank"

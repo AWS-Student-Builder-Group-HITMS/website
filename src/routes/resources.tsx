@@ -22,7 +22,7 @@ export default function Resources() {
       <section className="max-w-7xl mx-auto px-4 md:px-8 pt-16 pb-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {resources.map((r, i) => (
           <motion.a
-            href="#"
+            href="/contact"
             key={r.title}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

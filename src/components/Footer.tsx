@@ -61,10 +61,30 @@ export function Footer() {
         <div>
           <h4 className="font-bold mb-3 text-sm tracking-widest uppercase text-primary">Connect</h4>
           <div className="flex gap-3">
-            {[Github, Linkedin, MessageCircle, Mail].map((Icon, i) => (
+            {[
+              {
+                icon: Github,
+                href: "https://github.com/AWS-Student-Builder-Group-HITMS/website",
+                label: "GitHub",
+              },
+              {
+                icon: Linkedin,
+                href: "https://www.linkedin.com/company/aws-student-builder-group-hitms",
+                label: "LinkedIn",
+              },
+              {
+                icon: MessageCircle,
+                href: "https://chat.whatsapp.com/FgyyG0kLNIKIovBwenLagq",
+                label: "WhatsApp",
+              },
+              { icon: Mail, href: "/contact", label: "Contact" },
+            ].map(({ icon: Icon, href, label }) => (
               <a
-                key={i}
-                href="#"
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                aria-label={label}
                 className="h-10 w-10 grid place-items-center rounded-md border border-border hover:border-primary hover:text-primary hover:shadow-[0_0_20px_oklch(0.769_0.165_64.5/0.4)] transition"
               >
                 <Icon size={16} />

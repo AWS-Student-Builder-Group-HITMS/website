@@ -16,6 +16,7 @@ import {
   Database,
   Network,
   Boxes,
+  Image as ImageIcon,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useMeta } from "@/hooks/useMeta";
@@ -199,8 +200,7 @@ export default function Index() {
               We turn curiosity into cloud capability.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-foreground/80">
-              We create a welcoming space for students to learn AWS, build practical projects, and
-              grow into the next generation of cloud builders.
+              A welcoming space to learn AWS, build real projects, and grow as cloud builders.
             </p>
             <div className="mt-8 grid sm:grid-cols-2 gap-4">
               {whatWeDo.map((item) => (
@@ -231,10 +231,17 @@ export default function Index() {
               A student-led builder community at HITMS.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-foreground/80">
-              We are learners, mentors, problem-solvers, and future cloud professionals who build
-              together, share knowledge, and lift each other up.
+              Learners, mentors, and future cloud professionals — building and growing together.
             </p>
-            <ul className="mt-8 space-y-3 text-foreground/80">
+
+            <div className="mt-6 group relative aspect-video overflow-hidden rounded-2xl border border-border/60">
+              <div className="absolute inset-0 scale-100 group-hover:scale-105 transition-transform duration-500">
+                <ImageSlot src="/team.jpg" label="AWS SBG HITMS team" icon={Users} />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
+            </div>
+
+            <ul className="mt-6 space-y-3 text-foreground/80">
               {whoWeAre.map((item) => (
                 <li
                   key={item}
@@ -306,62 +313,116 @@ export default function Index() {
       {/* STATS PARALLAX */}
       <ParallaxStats />
 
-      {/* EVENTS PREVIEW */}
+      {/* GALLERY — beautiful shapes + hover reveal, ready for your event photos */}
       <section className="relative py-24 px-4 md:px-8 overflow-hidden">
+        <FlyingIcons density={0.4} />
         <div className="relative max-w-7xl mx-auto">
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-xs tracking-[0.3em] uppercase text-primary font-bold mb-2">
-                Events
-              </p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight">
-                Join what is happening next.
-              </h2>
-            </div>
-            <Link
-              to="/events"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-            >
-              Explore all events <ArrowRight size={14} />
-            </Link>
+          <div className="mb-12">
+            <p className="text-xs tracking-[0.3em] uppercase text-primary font-bold mb-2">
+              Gallery
+            </p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight">
+              Moments from the <span className="text-gradient-primary">community.</span>
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-foreground/70">
+              Snapshots from workshops, hackathons, and meetups. Drop your photos into the tiles
+              below.
+            </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-            {featuredEvents
-              .filter(
-                (event, index, all) =>
-                  all.findIndex(
-                    (item) => item.title === event.title && item.date === event.date,
-                  ) === index,
-              )
-              .map((event, index) => (
-                <motion.div
-                  key={`${event.title}-${event.date}`}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ delay: index * 0.05, duration: 0.35 }}
-                  className="group flex h-full min-h-[220px] flex-col justify-between rounded-2xl border border-border/80 bg-card/85 p-4 shadow-[0_0_24px_rgba(0,0,0,0.12)] transition-all hover:-translate-y-1"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.24em] text-primary">
-                      {event.type}
-                    </span>
-                    <span className="text-xs font-medium text-foreground/70">{event.date}</span>
-                  </div>
-                  <div className="mt-4 flex-1">
-                    <h3 className="text-lg font-black tracking-tight text-foreground">
-                      {event.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground/75">{event.desc}</p>
-                  </div>
-                  <div className="mt-4 flex items-center justify-between gap-3 text-xs text-foreground/70">
-                    <span className="line-clamp-1">{event.location}</span>
-                    <span className="font-semibold text-primary">{event.badge}</span>
-                  </div>
-                </motion.div>
-              ))}
+          {/* To add a photo: set `src` on the matching item in `galleryItems` below,
+              e.g. src: "/images/gallery/hackathon-1.jpg" */}
+          <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[170px] gap-5">
+            {galleryItems.map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.06, duration: 0.4 }}
+                data-hover
+                className={`group relative overflow-hidden border border-border/70 bg-card/70 transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:shadow-[0_10px_40px_rgba(0,0,0,0.25)] ${item.shape} ${item.span}`}
+              >
+                <div className="absolute inset-0 scale-105 group-hover:scale-[1.15] transition-transform duration-700">
+                  <ImageSlot src={item.src} label={item.label} icon={item.icon} />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-white font-semibold">
+                    {item.label}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* WHAT'S COMING NEXT — teaser section instead of specific event cards,
+          since exact dates aren't locked in yet. Keeps the "join us" energy
+          without showing placeholder/fake event info. */}
+      <section className="relative py-24 px-4 md:px-8 overflow-hidden">
+        <FlyingIcons density={0.4} />
+        <div className="relative max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group relative rounded-3xl border border-primary/35 bg-card/90 overflow-hidden p-10 md:p-16 text-center"
+          >
+            <div
+              className="absolute inset-0 opacity-60 group-hover:opacity-90 transition duration-700"
+              style={{ background: "var(--gradient-hero)" }}
+            />
+            <div className="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+            <div className="absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
+
+            <div className="relative">
+              <p className="inline-flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-primary font-bold mb-4">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                Something's Brewing
+              </p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight max-w-3xl mx-auto">
+                The next workshop, hackathon, or speaker session is being planned —
+                <span className="text-gradient-primary"> right now.</span>
+              </h2>
+              <p className="mt-4 max-w-xl mx-auto text-base text-foreground/80">
+                We're locking in dates for what's coming next. Join the WhatsApp community to be the
+                first to know the moment it drops — no spam, just updates that matter.
+              </p>
+
+              <div className="mt-8 grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto text-left">
+                {comingNextPillars.map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex items-center gap-3 rounded-2xl border border-border/70 bg-background/60 px-4 py-3"
+                  >
+                    <div className="shrink-0 h-9 w-9 rounded-lg border border-primary/40 bg-primary/10 grid place-items-center text-primary">
+                      <item.icon size={16} />
+                    </div>
+                    <span className="text-sm font-semibold text-foreground/90">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-9 flex flex-wrap gap-3 justify-center">
+                <a
+                  href="https://chat.whatsapp.com/FgyyG0kLNIKIovBwenLagq"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition"
+                >
+                  <Zap size={16} /> Get Notified First
+                </a>
+                <Link
+                  to="/events"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition"
+                >
+                  See Past Events <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -450,8 +511,8 @@ export default function Index() {
               Ready to <span className="text-gradient-primary">build the cloud?</span>
             </h2>
             <p className="text-foreground/80 max-w-xl mx-auto mb-8">
-              Join our driving community of student builders across HITMS. Empowering one another to
-              become architects of tomorrow.
+              Join our community of student builders across HITMS — becoming architects of tomorrow,
+              together.
             </p>
             <div className="flex gap-3 justify-center flex-wrap">
               <a
@@ -470,36 +531,62 @@ export default function Index() {
   );
 }
 
+/**
+ * ImageSlot — reusable image placeholder.
+ * Pass a `src` and it renders the real photo. Leave `src` empty/undefined
+ * and it renders a soft gradient placeholder with an icon + label, so the
+ * layout looks finished today and is a one-line change once you have photos.
+ */
+function ImageSlot({
+  src,
+  label,
+  icon: Icon = ImageIcon,
+}: {
+  src?: string;
+  label: string;
+  icon?: typeof ImageIcon;
+}) {
+  if (src) {
+    return <img src={src} alt={label} className="h-full w-full object-cover" loading="lazy" />;
+  }
+  return (
+    <div className="h-full w-full flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-primary/15 via-card to-accent/10 text-foreground/40 px-3 text-center">
+      <Icon size={26} strokeWidth={1.4} />
+      <span className="text-[9px] tracking-[0.2em] uppercase leading-snug">{label}</span>
+    </div>
+  );
+}
+
 const features = [
   {
     icon: Cloud,
     title: "AWS Credits & Tools",
-    desc: "Get exclusive access to AWS credits, Udemy licenses and certification vouchers to sharpen your skills and ship production-ready projects.",
+    desc: "Exclusive AWS credits, Udemy licenses, and certification vouchers to fuel your projects.",
   },
   {
     icon: Award,
     title: "Certifications",
-    desc: "Prepare for AWS Cloud Practitioner, Solutions Architect and Developer Associate with curated learning paths and exam vouchers.",
+    desc: "Curated paths and vouchers for Cloud Practitioner, Solutions Architect, and more.",
   },
   {
     icon: Code2,
     title: "Hands-on Projects",
-    desc: "Build real-world cloud applications using S3, Lambda, EC2, DynamoDB and more — guided by mentors and AWS experts.",
+    desc: "Build real apps with S3, Lambda, EC2, DynamoDB — guided by mentors.",
   },
   {
     icon: Cpu,
     title: "AI & Cloud Innovation",
-    desc: "Dive into the next-gen intersection of AI and cloud-native engineering — from Bedrock to SageMaker.",
+    desc: "Explore AI and cloud-native engineering, from Bedrock to SageMaker.",
   },
   {
     icon: Users,
     title: "Global Network",
-    desc: "Connect with 99K+ student builders in 35+ regions. Peers, mentors, AWS employees — all in one Slack.",
+    desc: "Connect with 99K+ builders across 35+ regions, all in one community.",
   },
   {
     icon: Rocket,
     title: "Builder Culture",
-    desc: "Hackathons, workshops, speaker sessions. Lead, contribute, ship — and become the architect of tomorrow.",
+    desc: "Hackathons, workshops, and speaker sessions. Lead, build, ship.",
   },
 ];
 
@@ -507,56 +594,37 @@ const whatWeDo = [
   {
     icon: Cloud,
     title: "Hands-on AWS learning",
-    desc: "Workshops, labs, and guided projects that make cloud concepts practical and memorable.",
+    desc: "Workshops and guided labs that make cloud concepts practical.",
   },
   {
     icon: Code2,
     title: "Real builder projects",
-    desc: "We help students create and ship solutions that matter — not just study slides and notes.",
+    desc: "Ship real solutions, not just slides and notes.",
   },
   {
     icon: Rocket,
     title: "Mentorship and growth",
-    desc: "From first steps to final launch, our community helps learners move forward with confidence.",
+    desc: "From first steps to launch, we help you grow.",
   },
   {
     icon: Sparkles,
     title: "Community and visibility",
-    desc: "We build a supportive circle where students can showcase ideas, get feedback, and find opportunities.",
+    desc: "Showcase ideas, get feedback, find new opportunities.",
   },
 ];
 
 const whoWeAre = [
   "A student-led community focused on AWS, cloud, AI, and innovation.",
-  "A place where beginners and aspiring builders can learn without fear of being left behind.",
-  "A network of peers, mentors, and future professionals who grow together.",
+  "A safe space for beginners to learn without judgment.",
+  "Peers and mentors who grow together, one project at a time.",
 ];
 
-const featuredEvents = [
-  {
-    type: "Workshop",
-    date: "Aug 12",
-    title: "Cloud Foundations Lab",
-    desc: "A hands-on session covering core AWS services, deployment basics, and practical cloud workflows.",
-    location: "HITMS Lab",
-    badge: "Free",
-  },
-  {
-    type: "Community",
-    date: "Aug 24",
-    title: "Builder Circle Meetup",
-    desc: "Connect with members, share ideas, and discover opportunities for your next project or role.",
-    location: "Online + Campus",
-    badge: "Open",
-  },
-  {
-    type: "Hackathon",
-    date: "Sep 07",
-    title: "Innovate-A-Thon Sprint",
-    desc: "Work with peers to ship a rapid cloud solution and present your ideas to the community.",
-    location: "Innovation Hub",
-    badge: "Register",
-  },
+// Pillars shown in the "What's Coming Next" teaser — categories only, no fixed
+// dates, since specific upcoming events aren't confirmed yet.
+const comingNextPillars = [
+  { icon: Rocket, label: "Hackathons" },
+  { icon: Cloud, label: "Workshops" },
+  { icon: Sparkles, label: "Speaker Sessions" },
 ];
 
 const programs = [
@@ -595,6 +663,59 @@ const heroStats = [
   { n: "300+", l: "Builders" },
   { n: "20+", l: "Workshops" },
   { n: "99K+", l: "Global Network" },
+];
+
+// Gallery tiles — mix of shapes for visual interest. Set `src` on any item
+// once you have a photo, e.g. src: "/images/gallery/workshop-1.jpg"
+const galleryItems: {
+  label: string;
+  icon: typeof ImageIcon;
+  src?: string;
+  shape: string;
+  span: string;
+}[] = [
+  {
+    label: "Add photo: Hackathon night",
+    icon: Rocket,
+    src: undefined,
+    shape: "rounded-[2rem]",
+    span: "col-span-2 row-span-2",
+  },
+  {
+    label: "Add photo: Workshop",
+    icon: Cloud,
+    src: undefined,
+    shape: "rounded-full",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    label: "Add photo: Team huddle",
+    icon: Users,
+    src: undefined,
+    shape: "[clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    label: "Add photo: Certification win",
+    icon: Award,
+    src: undefined,
+    shape: "rounded-3xl",
+    span: "col-span-1 row-span-2",
+  },
+  {
+    label: "Add photo: Speaker session",
+    icon: Sparkles,
+    src: undefined,
+    shape: "rounded-full",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    label: "Add photo: Builder demo",
+    icon: Code2,
+    src: undefined,
+    shape: "rounded-2xl",
+    span: "col-span-2 row-span-1",
+  },
 ];
 
 function ParallaxStats() {
