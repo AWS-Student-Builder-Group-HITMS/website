@@ -49,9 +49,9 @@ export default function Events() {
       date: "6 Feb 2026 · 11:00 AM",
       type: "HITMS Auditorium",
       images: [
-        "/events_pics/introductory.jpg",
-        "/events_pics/captain_speech.jpg",
-        "/events_pics/audience.jpg",
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966897/introductory.jpg",
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966890/captain_speech.jpg",
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966885/audience.jpg",
       ],
       links: [
         {
@@ -81,7 +81,11 @@ export default function Events() {
         "Prizes were awarded to the top-performing teams, and the session opened up honest conversations about building a long-term career in the digital age, mentorship, and contributing to real AWS projects through the Student Builder Group. The recording and resources were shared afterward with the full community.",
       date: "June 29, 2026",
       type: "Online Session",
-      images: ["/events_pics/overview.jpg", "/events_pics/session.jpg", "/events_pics/prize.jpg"],
+      images: [
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966911/overview.jpg",
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966913/session.jpg",
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966912/prize.jpg",
+      ],
       links: [
         {
           label: "Instagram",

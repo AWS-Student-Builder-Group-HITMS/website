@@ -62,7 +62,7 @@ const roleLabel = (role: string) => role.replace(/^Lead\s*·\s*/i, "");
 const captain: Member = {
   name: "Hanzala Salaheen",
   role: "Student Builder Group Captain",
-  image: "/members/captain/Hanzala Salaheen.jpg",
+  image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966878/231%201.png",
   roll: "24BSSW041",
   bio: `Hanzala Salaheen is an IBM-certified AI Backend Engineer at Geeks Root, specializing in RAG and intelligent automation. He leads the AWS Student Builder Group at HITMS, where he mentors peers and drives technical growth. He builds scalable AI solutions—including autonomous agents and AWS pipelines—while pursuing his Software Engineering degree.`,
   github: "https://github.com/hanzi448",
@@ -80,7 +80,8 @@ const teams: Team[] = [
     lead: {
       name: "Abdul Rafay",
       role: "Lead · Technical",
-      image: "/members/technical/Abdul Rafay.jpg",
+      image:
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966906/me%20-%20Abdul%20Rafay%20Khalid%20Jameel.jpg",
       roll: "24BSSW038",
       bio: "A Full Stack Developer passionate about creating modern, user-focused digital experiences. Expert in writing clean, scalable code to solve complex problems. Brings a consistent track record of delivering high-quality, responsive applications.",
       github: "https://github.com/ARafaykhalid",
@@ -90,7 +91,7 @@ const teams: Team[] = [
       {
         name: "Waniza Khan",
         role: "Technical",
-        image: "/members/technical/Waniza Khan.jpg",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966918/Waniza%20Khan.png",
         roll: "24BSSW079",
         bio: "A Full Stack Developer specializing in MERN stack high-performance applications. Experienced in architecting robust APIs and responsive frontends. Committed to writing clean, maintainable code to create seamless user journeys.",
         github: "https://github.com/Waniza-Khan",
@@ -100,7 +101,7 @@ const teams: Team[] = [
       {
         name: "Ahmed Hussain",
         role: "Technical",
-        image: "/members/technical/Ahmed Hussain.jpg",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966881/Ahmed%20Hussain.png",
         roll: "24BSCS219",
         bio: "An expert in Red Hat security and Full Stack development with four years of experience. Specializes in building secure, scalable digital solutions. Passionate about tackling complex technical challenges and cybersecurity trends.",
         github: "https://github.com/ahmedhussain176",
@@ -110,7 +111,7 @@ const teams: Team[] = [
       {
         name: "Ahmed Mujtaba",
         role: "Technical",
-        image: "/members/technical/Ahmed Mujtaba.jpg",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966882/Ahmed%20Mujtaba.png",
         roll: "24BSCS026",
         bio: "A passionate Computer Science student specializing in building responsive and aesthetic web interfaces. Expert in React, Tailwind CSS, and JavaScript. Focused on transforming design concepts into seamless user experiences across all devices.",
         github: "https://github.com/mujtabakhan24",
@@ -128,7 +129,8 @@ const teams: Team[] = [
     lead: {
       name: "Mutahir Raza",
       role: "Lead · Media",
-      image: "/members/media/Mutahir Raza.jpg",
+      image:
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966902/Mask%20group%20%284%29.png",
       roll: "24BSSW101",
       bio: "A fitness content creator simplifying healthy living and nutrition for students. Provides practical, budget-friendly guidance to help beginners achieve wellness goals. Committed to demystifying fitness through actionable and accessible content.",
       linkedin: "https://www.linkedin.com/in/mutahir-raza-632027376/",
@@ -138,18 +140,24 @@ const teams: Team[] = [
       {
         name: "Umaima Junaid",
         role: "Media",
-        image: "/members/media/Umaima Junaid.jpg",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966916/Umaima%20Junaid.png",
         roll: "24BSCS137",
         bio: "A Computer Science student with a deep interest in cybersecurity and innovation. An active debater who refines problem-solving abilities through technical events. Driven by intellectual curiosity and a commitment to collaborative, challenging projects.",
         github: "https://github.com/umaima13",
         linkedin:
           "https://www.linkedin.com/in/umaima-junaid-0ab93a339?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       },
-      { name: "Minha Fatima", role: "Media", image: "/members/media/Minha Fatima.jpg" },
+      {
+        name: "Minha Fatima",
+        role: "Media",
+        image:
+          "https://res.cloudinary.com/txg3hveh/image/upload/v1783966907/Minha_Media_-removebg-preview%201.png",
+      },
       {
         name: "Muhammad Shayan Baig",
         role: "Media",
-        image: "/members/media/Muhammad Shayan Baig.jpg",
+        image:
+          "https://res.cloudinary.com/txg3hveh/image/upload/v1783966910/Muhammad%20Shayan%20Baig.png",
         roll: "25BSSW113",
         bio: "An aspiring Developer and Digital Marketing expert bridging technical functionality with market reach. Combines core development skills with data-driven strategies for business growth. Passionate about staying ahead of digital trends.",
         github: "https://github.com/shayanbaigminecraft-max",
@@ -169,7 +177,7 @@ const teams: Team[] = [
     lead: {
       name: "Ashir Ali",
       role: "Lead · Marketing",
-      image: "/members/marketing/Ashir Ali.jpg",
+      image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966880/77%201.png",
       roll: "24BSSWO34",
       bio: "A Software Engineering student dedicated to mastering AWS and cloud infrastructure. Focused on architecting efficient software solutions to support modern, high-demand applications. Committed to building practical skills that address real-world problems.",
       github: "https://github.com/aashirazeemIMS",
@@ -179,7 +187,7 @@ const teams: Team[] = [
       {
         name: "Taha Baig",
         role: "Marketing",
-        image: "/members/marketing/Taha Baig.jpg",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966877/1111%201.png",
         roll: "25BSSW089",
         bio: "A Digital Marketer focused on driving growth through data-driven and creative strategies. Expert in social media marketing and content optimization. Committed to delivering measurable results and maximizing brand presence through emerging trends.",
         linkedin:
@@ -188,7 +196,7 @@ const teams: Team[] = [
       {
         name: "Farwa Zehra",
         role: "Marketing",
-        image: "/members/marketing/Farwa Zehra.jpg",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966894/Farwa%20Zehra.png",
         roll: "25BSCS002",
         bio: "An aspiring Cloud professional exploring the intersection of technology and product strategy. Focused on architecting cloud-native solutions for scalable digital products. Committed to bridging the gap between high-level technical innovation and design.",
         github: "https://github.com/farwaxzehra",
@@ -197,54 +205,11 @@ const teams: Team[] = [
       {
         name: "Hassan Irfan",
         role: "Marketing",
-        image: "/members/marketing/Hassan Irfan.jpg",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966903/Mask%20group.png",
         roll: "24BSCS033",
         github: "https://github.com/Hassan-Irfan-07",
         linkedin: "https://www.linkedin.com/in/hassanirfan07",
         bio: "Digital marketer at Sellevate Pty Ltd managing social strategy and paid ads across Australia and Pakistan. 4th-semester BSCS student at HITMS pursuing the IBM Data Science Professional Certificate; transitioning toward data science and AI while freelancing.",
-      },
-    ],
-  },
-  {
-    key: "creative",
-    name: "Creative Team",
-    tag: "Design · Brand · Identity",
-    icon: Palette,
-    accent: "from-fuchsia-500/35 to-primary/30",
-    glow: "oklch(0.7 0.25 330 / 0.5)",
-    lead: {
-      name: "Fahad Shaikh",
-      role: "Lead · Creative",
-      image: "/members/creative/Fahad Ahmed.jpg",
-      roll: "24BSSW013",
-      bio: "A UI/UX designer and Computer Science student passionate about crafting clean, user-centered digital experiences. I specialize in balancing aesthetics with usability to build modern websites and mobile apps. Driven by intellectual curiosity and a commitment to creating impactful products while growing my freelance career.",
-      linkedin:
-        "https://www.linkedin.com/in/fahad-shaikh-21b944245?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
-      behance: "https://www.behance.net/fahadahmed100",
-    },
-    members: [
-      {
-        name: "Misbah Waqar",
-        role: "Creative",
-        image: "/members/creative/Misbah Waqar.jpg",
-        roll: "24BSSW003",
-        bio: "A creative professional who expertly blends visual design with stage presence. Specializes in crafting distinct brand identities while ensuring events run smoothly. Passionate about delivering memorable experiences that connect storytelling with design.",
-        linkedin:
-          "https://www.linkedin.com/in/misbah-waqar-uddin-86b9b4339?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-        portfolio: "https://www.instagram.com/graphysicist?igsh=YXdvODZobzg3OG5k",
-      },
-      {
-        name: "Maryam Arshad",
-        role: "Creative",
-        image: "/members/creative/Maryam Arshad.jpg",
-        roll: "24BSSW078",
-        bio: "A BS Software Engineering student bridging technical functionality with creative design. A certified Graphic Designer dedicated to crafting digital products that are both aesthetic and usable. Strives for excellence in user-centric experiences.",
-        linkedin: "https://www.linkedin.com/in/maryam-s-78406b363",
-      },
-      {
-        name: "Khalique Mehmood",
-        role: "Creative",
-        image: "/members/creative/Khalique Mehmood.jpg",
       },
     ],
   },
@@ -258,7 +223,8 @@ const teams: Team[] = [
     lead: {
       name: "Ayesha Shaikh",
       role: "Lead · Events",
-      image: "/members/events/Ayesha Shaikh.jpg",
+      image:
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966887/Ayesha_Shaikh_Event_Lead_-removebg-preview%201.png",
       roll: "24BSSW022",
       bio: "A Software Engineering student and Event Management Lead for AWS SBG and ACM. Expert in coordinating large-scale events through strong leadership. Thrives on blending technical knowledge with strategic planning to ensure project excellence.",
       github: "https://github.com/AyeshaShaikh-19",
@@ -269,7 +235,7 @@ const teams: Team[] = [
       {
         name: "Ayema Nadeem",
         role: "Events",
-        image: "/members/events/Ayema Nadeem.jpg",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966886/Ayema%20Nadeem.png",
         roll: "24BSCS221",
         bio: "A BS Computer Science student balancing technical studies with leadership roles. Actively mastering web development and cloud computing as a member of AWS SBG. Passionate about organizing events to foster a productive, collaborative environment.",
         github: "https://github.com/itsaima",
@@ -278,7 +244,7 @@ const teams: Team[] = [
       {
         name: "Muhammad Hasan",
         role: "Events",
-        image: "/members/events/Muhammad Hasan.jpg",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966909/Muhammad%20Hasan.png",
         roll: "24BSCS127",
         bio: "A dedicated Computer Science student at HITMS and an experienced public speaker. Frequently leads volunteer teams and hosts major university events. Committed to innovation and solving real-world challenges through impactful projects.",
         github: "https://github.com/hasan-aziz127",
@@ -288,11 +254,51 @@ const teams: Team[] = [
       {
         name: "Shahmeer Shaikh",
         role: "Events",
-        image: "/members/events/Shahmeer Shaikh.jpg",
+        image:
+          "https://res.cloudinary.com/txg3hveh/image/upload/v1783966914/Shameer_event_-removebg-preview%201.png",
         roll: "25BSFT042",
         bio: "A core member of the AWS SBG HITMS Event Management team. Passionate about fostering tech communities and enhancing the student learning experience. Enjoys collaborating to inspire peers through engaging events and exploration.",
         linkedin:
           "https://www.linkedin.com/in/shahmeer-shaikh-03837b365?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      },
+    ],
+  },
+  {
+    key: "creative",
+    name: "Creative Team",
+    tag: "Design · Brand · Identity",
+    icon: Palette,
+    accent: "from-fuchsia-500/35 to-primary/30",
+    glow: "oklch(0.7 0.25 330 / 0.5)",
+    lead: {
+      name: "Fahad Shaikh",
+      role: "Lead · Creative",
+      image:
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966900/Mask%20group%20%281%29.png",
+      roll: "24BSSW013",
+      bio: "A UI/UX designer and Computer Science student passionate about crafting clean, user-centered digital experiences. I specialize in balancing aesthetics with usability to build modern websites and mobile apps. Driven by intellectual curiosity and a commitment to creating impactful products while growing my freelance career.",
+      linkedin:
+        "https://www.linkedin.com/in/fahad-shaikh-21b944245?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      behance: "https://www.behance.net/fahadahmed100",
+    },
+    members: [
+      {
+        name: "Misbah Waqar",
+        role: "Creative",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966883/asdas%201.png",
+        roll: "24BSSW003",
+        bio: "A creative professional who expertly blends visual design with stage presence. Specializes in crafting distinct brand identities while ensuring events run smoothly. Passionate about delivering memorable experiences that connect storytelling with design.",
+        linkedin:
+          "https://www.linkedin.com/in/misbah-waqar-uddin-86b9b4339?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+        portfolio: "https://www.instagram.com/graphysicist?igsh=YXdvODZobzg3OG5k",
+      },
+      {
+        name: "Maryam Arshad",
+        role: "Creative",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966898/Maryam%20Arshad.png",
+        roll: "24BSSW078",
+        bio: "A BS Software Engineering student bridging technical functionality with creative design. A certified Graphic Designer dedicated to crafting digital products that are both aesthetic and usable. Strives for excellence in user-centric experiences.",
+        linkedin: "https://www.linkedin.com/in/maryam-s-78406b363",
       },
     ],
   },
@@ -646,21 +652,20 @@ function MemberCard({
           )}
         </div>
 
-        {/* Badges — sit below the circle, centered, so they never overlap the face */}
-        {(lead || m.badge) && (
-          <div className="mt-2 flex flex-col items-center gap-1">
-            {lead && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-[8px] tracking-widest uppercase font-black shadow-md">
-                <Crown size={9} /> Lead
-              </span>
-            )}
-            {m.badge && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-primary/20 to-primary/5 border border-primary/50 text-[7.5px] tracking-widest uppercase font-black text-primary backdrop-blur-sm shadow-md">
-                <Code2 size={8} /> {m.badge}
-              </span>
-            )}
-          </div>
-        )}
+        {/* Badges — sit below the circle, centered. Slot height is reserved even when
+            empty so every avatar section is identical, keeping name/Explore levels aligned. */}
+        <div className="mt-2 min-h-[19px] flex flex-col items-center gap-1">
+          {lead && (
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-[8px] tracking-widest uppercase font-black shadow-md">
+              <Crown size={9} /> Lead
+            </span>
+          )}
+          {m.badge && (
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-primary/20 to-primary/5 border border-primary/50 text-[7.5px] tracking-widest uppercase font-black text-primary backdrop-blur-sm shadow-md">
+              <Code2 size={8} /> {m.badge}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Text block — name always starts here, so all cards line up regardless of badges */}
@@ -727,13 +732,17 @@ function MemberCard({
           )}
         </div>
 
+        {/* Flexible spacer — absorbs leftover space so the button sits at the
+            bottom, while guaranteeing the icons never touch the button */}
+        <div className="flex-1 min-h-4" />
+
         <button
           onClick={(e) => {
             e.stopPropagation();
             open(m, team.glow);
           }}
           data-hover
-          className="mt-4 mb-1 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-primary/40 bg-primary/10 text-[10px] sm:text-[11px] tracking-widest uppercase font-black text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
+          className="mb-1 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-primary/40 bg-primary/10 text-[10px] sm:text-[11px] tracking-widest uppercase font-black text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
         >
           Explore
           <ArrowRight

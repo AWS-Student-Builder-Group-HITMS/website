@@ -22,6 +22,8 @@ import { Link } from "react-router-dom";
 import { useMeta } from "@/hooks/useMeta";
 
 export default function Index() {
+  const HIDE_COMING_NEXT = true;
+
   useMeta({
     title: "AWS Student Builder Group HITMS — Cloud Builders of Tomorrow",
     description:
@@ -236,7 +238,11 @@ export default function Index() {
 
             <div className="mt-6 group relative aspect-video overflow-hidden rounded-2xl border border-border/60">
               <div className="absolute inset-0 scale-100 group-hover:scale-105 transition-transform duration-500">
-                <ImageSlot src="/team.jpg" label="AWS SBG HITMS team" icon={Users} />
+                <ImageSlot
+                  src="https://res.cloudinary.com/txg3hveh/image/upload/v1783966915/team.jpg"
+                  label="AWS SBG HITMS team"
+                  icon={Users}
+                />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
             </div>
@@ -346,12 +352,7 @@ export default function Index() {
                 <div className="absolute inset-0 scale-105 group-hover:scale-[1.15] transition-transform duration-700">
                   <ImageSlot src={item.src} label={item.label} icon={item.icon} />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-white font-semibold">
-                    {item.label}
-                  </span>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent opacity-40 transition duration-500" />
               </motion.div>
             ))}
           </div>
@@ -361,70 +362,72 @@ export default function Index() {
       {/* WHAT'S COMING NEXT — teaser section instead of specific event cards,
           since exact dates aren't locked in yet. Keeps the "join us" energy
           without showing placeholder/fake event info. */}
-      <section className="relative py-24 px-4 md:px-8 overflow-hidden">
-        <FlyingIcons density={0.4} />
-        <div className="relative max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="group relative rounded-3xl border border-primary/35 bg-card/90 overflow-hidden p-10 md:p-16 text-center"
-          >
-            <div
-              className="absolute inset-0 opacity-60 group-hover:opacity-90 transition duration-700"
-              style={{ background: "var(--gradient-hero)" }}
-            />
-            <div className="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
-            <div className="absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
+      {!HIDE_COMING_NEXT && (
+        <section className="relative py-24 px-4 md:px-8 overflow-hidden">
+          <FlyingIcons density={0.4} />
+          <div className="relative max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="group relative rounded-3xl border border-primary/35 bg-card/90 overflow-hidden p-10 md:p-16 text-center"
+            >
+              <div
+                className="absolute inset-0 opacity-60 group-hover:opacity-90 transition duration-700"
+                style={{ background: "var(--gradient-hero)" }}
+              />
+              <div className="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+              <div className="absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
 
-            <div className="relative">
-              <p className="inline-flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-primary font-bold mb-4">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                Something's Brewing
-              </p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight max-w-3xl mx-auto">
-                The next workshop, hackathon, or speaker session is being planned —
-                <span className="text-gradient-primary"> right now.</span>
-              </h2>
-              <p className="mt-4 max-w-xl mx-auto text-base text-foreground/80">
-                We're locking in dates for what's coming next. Join the WhatsApp community to be the
-                first to know the moment it drops — no spam, just updates that matter.
-              </p>
+              <div className="relative">
+                <p className="inline-flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-primary font-bold mb-4">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                  Something's Brewing
+                </p>
+                <h2 className="text-3xl md:text-5xl font-black tracking-tight max-w-3xl mx-auto">
+                  The next workshop, hackathon, or speaker session is being planned —
+                  <span className="text-gradient-primary"> right now.</span>
+                </h2>
+                <p className="mt-4 max-w-xl mx-auto text-base text-foreground/80">
+                  We're locking in dates for what's coming next. Join the WhatsApp community to be
+                  the first to know the moment it drops — no spam, just updates that matter.
+                </p>
 
-              <div className="mt-8 grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto text-left">
-                {comingNextPillars.map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex items-center gap-3 rounded-2xl border border-border/70 bg-background/60 px-4 py-3"
-                  >
-                    <div className="shrink-0 h-9 w-9 rounded-lg border border-primary/40 bg-primary/10 grid place-items-center text-primary">
-                      <item.icon size={16} />
+                <div className="mt-8 grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto text-left">
+                  {comingNextPillars.map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex items-center gap-3 rounded-2xl border border-border/70 bg-background/60 px-4 py-3"
+                    >
+                      <div className="shrink-0 h-9 w-9 rounded-lg border border-primary/40 bg-primary/10 grid place-items-center text-primary">
+                        <item.icon size={16} />
+                      </div>
+                      <span className="text-sm font-semibold text-foreground/90">{item.label}</span>
                     </div>
-                    <span className="text-sm font-semibold text-foreground/90">{item.label}</span>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              <div className="mt-9 flex flex-wrap gap-3 justify-center">
-                <a
-                  href="https://chat.whatsapp.com/FgyyG0kLNIKIovBwenLagq"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition"
-                >
-                  <Zap size={16} /> Get Notified First
-                </a>
-                <Link
-                  to="/events"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition"
-                >
-                  See Past Events <ArrowRight size={14} />
-                </Link>
+                <div className="mt-9 flex flex-wrap gap-3 justify-center">
+                  <a
+                    href="https://chat.whatsapp.com/FgyyG0kLNIKIovBwenLagq"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition"
+                  >
+                    <Zap size={16} /> Get Notified First
+                  </a>
+                  <Link
+                    to="/events"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition"
+                  >
+                    See Past Events <ArrowRight size={14} />
+                  </Link>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* PROGRAMS */}
       <section className="relative py-24 px-4 md:px-8 overflow-hidden">
@@ -550,9 +553,9 @@ function ImageSlot({
     return <img src={src} alt={label} className="h-full w-full object-cover" loading="lazy" />;
   }
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-primary/15 via-card to-accent/10 text-foreground/40 px-3 text-center">
+    <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-primary/15 via-card to-accent/10 text-foreground/40 px-3 text-center">
       <Icon size={26} strokeWidth={1.4} />
-      <span className="text-[9px] tracking-[0.2em] uppercase leading-snug">{label}</span>
+      <span className="sr-only">{label}</span>
     </div>
   );
 }
@@ -677,7 +680,7 @@ const galleryItems: {
   {
     label: "Add photo: Hackathon night",
     icon: Rocket,
-    src: undefined,
+    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966921/WhatsApp%20Image%202026-07-13%20at%207.31.27%20PM.jpg",
     shape: "rounded-[2rem]",
     span: "col-span-2 row-span-2",
   },
@@ -691,14 +694,14 @@ const galleryItems: {
   {
     label: "Add photo: Team huddle",
     icon: Users,
-    src: undefined,
+    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966885/audience.jpg",
     shape: "[clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]",
     span: "col-span-1 row-span-1",
   },
   {
     label: "Add photo: Certification win",
     icon: Award,
-    src: undefined,
+    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966919/WhatsApp%20Image%202026-07-13%20at%207.31.27%20PM%20%282%29.jpg",
     shape: "rounded-3xl",
     span: "col-span-1 row-span-2",
   },
@@ -712,7 +715,7 @@ const galleryItems: {
   {
     label: "Add photo: Builder demo",
     icon: Code2,
-    src: undefined,
+    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966888/brand-asset-logo-76cfb827-20260713T200857.png",
     shape: "rounded-2xl",
     span: "col-span-2 row-span-1",
   },

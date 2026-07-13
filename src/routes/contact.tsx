@@ -27,7 +27,7 @@ const INSTAGRAM_URL =
   "https://www.instagram.com/awssbghitms?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
 const LINKEDIN_URL = "https://www.linkedin.com/company/aws-student-builder-group-hitms";
 const MEETUP_URL = "https://www.meetup.com/aws-sbg-at-hitms/";
-const QR_PATH = getCloudinaryUrl("aws-sbg-hitms/whatsapp-qr", { width: 400, quality: "auto" });
+const QR_PATH = "https://res.cloudinary.com/txg3hveh/image/upload/v1783966922/Whatsapp%20QR.jpg";
 
 // Form validation schema
 const contactFormSchema = z.object({
