@@ -21,13 +21,15 @@ import {
 import { Link } from "react-router-dom";
 import { useMeta } from "@/hooks/useMeta";
 
+const MEETUP_URL = "https://www.meetup.com/aws-sbg-at-hitms/";
+
 export default function Index() {
   const HIDE_COMING_NEXT = true;
 
   useMeta({
     title: "AWS Student Builder Group HITMS — Cloud Builders of Tomorrow",
     description:
-      "Join AWS Student Builder Group HITMS. Hands-on cloud, AI and builder culture for students. Same community. Stronger vision. Bigger future.",
+      "AWS SBG HITMS is a student-led tech community focused on Cloud, AI & Development to empower future builders.",
   });
   return (
     <Layout>
@@ -54,9 +56,6 @@ export default function Index() {
 
         {/* HUD lines */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-24 right-6 md:right-10 text-[9px] tracking-[0.4em] uppercase text-primary/70 font-mono">
-            v2026.01 · sbg.hitms
-          </div>
           <div className="absolute bottom-24 left-6 md:left-10 text-[9px] tracking-[0.4em] uppercase text-muted-foreground font-mono">
             ◢ build · ship · scale
           </div>
@@ -111,8 +110,8 @@ export default function Index() {
             transition={{ delay: 0.4 }}
             className="mt-6 max-w-xl text-sm md:text-base text-foreground/90 tracking-wide px-2"
           >
-            Same community. Stronger vision. Bigger future — engineered on the cloud by the next
-            wave of builders.
+            AWS SBG HITMS is a student-led tech community focused on Cloud, AI & Development to
+            empower future builders.
           </motion.p>
 
           <motion.div
@@ -133,13 +132,6 @@ export default function Index() {
               />
               <span className="absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 bg-gradient-to-r from-primary-glow to-primary" />
             </a>
-            <Link
-              to="/events"
-              data-cursor="EXPLORE"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition text-sm md:text-base"
-            >
-              View Workshops
-            </Link>
           </motion.div>
 
           {/* Live stats strip */}
@@ -315,9 +307,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-
-      {/* STATS PARALLAX */}
-      <ParallaxStats />
 
       {/* GALLERY — beautiful shapes + hover reveal, ready for your event photos */}
       <section className="relative py-24 px-4 md:px-8 overflow-hidden">
@@ -526,6 +515,14 @@ export default function Index() {
               >
                 <Zap size={16} /> Join WhatsApp
               </a>
+              <a
+                href={MEETUP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition"
+              >
+                <Users size={16} /> Join Meetup
+              </a>
             </div>
           </div>
         </div>
@@ -720,47 +717,3 @@ const galleryItems: {
     span: "col-span-2 row-span-1",
   },
 ];
-
-function ParallaxStats() {
-  const stats = [
-    { n: "99K+", l: "Student Builders" },
-    { n: "35+", l: "Regions Worldwide" },
-    { n: "200+", l: "Workshops Delivered" },
-    { n: "100%", l: "Builder Energy" },
-  ];
-
-  return (
-    <section className="relative py-28 overflow-hidden border-y border-border/60 bg-card/30">
-      <div className="absolute -top-32 -left-20 h-80 w-80 rounded-full bg-primary/10" />
-      <div className="absolute -bottom-32 -right-20 h-96 w-96 rounded-full bg-accent/10" />
-      <div className="relative max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        {stats.map((s, i) => (
-          <motion.div
-            key={s.l}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: i * 0.06, duration: 0.4 }}
-            data-hover
-            className="group relative rounded-2xl border border-primary/30 bg-background/40 p-6 overflow-hidden hover:-translate-y-1 transition-transform"
-          >
-            <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition duration-500" />
-            <div className="absolute top-2 left-2 text-[8px] font-mono tracking-[0.3em] text-primary/60">
-              ▸ {String(i + 1).padStart(2, "0")}
-            </div>
-            <div className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-            <div className="relative">
-              <div className="text-5xl md:text-7xl font-black font-display text-gradient-primary drop-shadow-[0_0_25px_oklch(0.769_0.165_64.5/0.5)]">
-                {s.n}
-              </div>
-              <div className="mt-2 text-[10px] tracking-[0.3em] uppercase text-foreground/75 font-mono">
-                {s.l}
-              </div>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-}

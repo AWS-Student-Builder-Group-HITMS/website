@@ -7,15 +7,15 @@ import { useMeta } from "@/hooks/useMeta";
 export default function About() {
   useMeta({
     title: "About — AWS Student Builder Group HITMS",
-    description: "Our story, mission and vision. Same community. Stronger vision. Bigger future.",
+    description: "Our story, mission and vision. Where builders shape tomorrow's tech.",
   });
 
   return (
     <Layout>
       <PageHeader
         eyebrow="Our Story"
-        title="Same Community Stronger Vision Bigger Future"
-        subtitle="AWS Cloud Clubs evolved into AWS Student Builder Groups — a global movement of student innovators building the next generation of cloud, AI and builder culture."
+        title="Where Builders Shape Tomorrow's Tech"
+        subtitle="AWS Student Builder Group HITMS is a global movement of student innovators building the next generation of cloud, AI, cybersecurity, web development and builder culture."
       />
 
       <section className="max-w-6xl mx-auto px-4 md:px-8 py-16 grid md:grid-cols-3 gap-5">
@@ -69,7 +69,7 @@ const pillars = [
   {
     icon: Target,
     title: "Our Mission",
-    desc: "Empower students to understand Cloud, Serverless and modern building systems through local, hands-on, peer-to-peer workshops.",
+    desc: "Empower students across Cloud, AI, Cybersecurity, Web Development and other modern tech stacks through local, hands-on, peer-to-peer workshops.",
   },
   {
     icon: Star,
@@ -86,13 +86,13 @@ const pillars = [
 const timeline = [
   {
     year: "2025",
-    title: "AWS Cloud Club Launched",
-    desc: "We started as an AWS Cloud Club, laying down the early bricks of cloud education inside the university.",
+    title: "AWS SBG HITMS Founded",
+    desc: "We launched as AWS Student Builder Group HITMS, laying down the early bricks of cloud education inside the university.",
   },
   {
     year: "2026",
-    title: "Community Evolution",
-    desc: "With growing programs and stronger industry relations, we transitions into the new AWS SBG era.",
+    title: "Community Growth",
+    desc: "With growing programs and stronger industry relations, our builder base and workshop cadence scaled fast.",
   },
   {
     year: "2026",

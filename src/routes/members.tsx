@@ -300,6 +300,15 @@ const teams: Team[] = [
         bio: "A BS Software Engineering student bridging technical functionality with creative design. A certified Graphic Designer dedicated to crafting digital products that are both aesthetic and usable. Strives for excellence in user-centric experiences.",
         linkedin: "https://www.linkedin.com/in/maryam-s-78406b363",
       },
+      {
+        name: "Mariam",
+        role: "Creative",
+        roll: "24BSSW029",
+        bio: "A graphic designer crafting bold, purposeful visual identities. Brings two years of experience turning ideas into striking, memorable design. Passionate about shaping concepts into visuals that communicate with clarity and impact.",
+        github: "https://github.com/mmAS13",
+        linkedin: "https://www.linkedin.com/in/mariammemon13/",
+        portfolio: "https://mariammportfolio.netlify.app/",
+      },
     ],
   },
 ];
@@ -343,12 +352,12 @@ export default function Members() {
         <PageHeader
           eyebrow="The Architects"
           title="Meet The Minds Building The Cloud"
-          subtitle="One captain. Five elite squads. Engineering the future of cloud at HITMS."
+          subtitle="One leader. Five elite squads. Engineering the future of cloud, AI, development and much more at HITMS."
         />
 
         <CaptainSpotlight />
 
-        <section className="relative py-6 border-y border-border/60 bg-card/30 overflow-hidden">
+        <section className="relative py-6 mt-10 md:mt-14 border-y border-border/60 bg-card/30 overflow-hidden">
           <div className="flex gap-10 whitespace-nowrap animate-marquee-rev text-xl font-bold uppercase tracking-widest">
             {[...allNames, ...allNames].map((n, i) => (
               <span key={i} className="inline-flex items-center gap-10 text-muted-foreground/60">
@@ -380,7 +389,7 @@ function CaptainSpotlight() {
   const { open } = useMemberModal();
 
   return (
-    <section className="relative max-w-7xl mx-auto px-4 md:px-8 -mt-2">
+    <section className="relative max-w-7xl mx-auto px-4 md:px-8 -mt-2 mb-10 md:mb-14">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -441,7 +450,7 @@ function CaptainSpotlight() {
                   src={captain.image}
                   alt={captain.name}
                   onError={() => setImgFailed(true)}
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
                 />
               )}
             </div>
@@ -459,7 +468,7 @@ function CaptainSpotlight() {
           <div className="text-center md:text-left" style={{ transform: "translateZ(30px)" }}>
             <p className="text-[10px] md:text-xs tracking-[0.4em] uppercase text-primary font-bold mb-3 inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-              Student Builder Group · Lead
+              Student Builder Group · Leader
             </p>
             <h2 className="text-3xl md:text-4xl font-black tracking-tight font-display">
               <span className="text-gradient-primary">{captain.name}</span>
@@ -628,7 +637,7 @@ function MemberCard({
       {/* Avatar — fixed-size circle, identical for every card so photos never look uneven */}
       <div className="relative pt-6 sm:pt-7 pb-1 flex flex-col items-center shrink-0">
         <div
-          className="relative h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 rounded-full overflow-hidden ring-4 ring-primary/25 shrink-0"
+          className="relative h-32 w-32 sm:h-36 sm:w-36 md:h-40 md:w-40 rounded-full overflow-hidden ring-4 ring-primary/25 shrink-0"
           style={{ boxShadow: `0 0 26px ${team.glow}` }}
         >
           {/* Gradient background always present (fallback base) */}
@@ -641,7 +650,10 @@ function MemberCard({
             </div>
           )}
 
-          {/* Photo — strictly clipped to the circle by the parent's overflow-hidden */}
+          {/* Photo — strictly clipped to the circle by the parent's overflow-hidden.
+              Same object-fit/object-position treatment as every other avatar on the
+              site (captain spotlight + modal), so every photo is framed the same way
+              regardless of the source image's own size or aspect ratio. */}
           {m.image && !imgFailed && (
             <img
               src={m.image}
@@ -832,7 +844,7 @@ function MemberModal({
                   src={member.image}
                   alt={member.name}
                   onError={() => setImgFailed(true)}
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
                 />
               )}
             </div>

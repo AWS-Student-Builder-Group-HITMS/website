@@ -64,7 +64,7 @@ export function Footer() {
             {[
               {
                 icon: Github,
-                href: "https://github.com/AWS-Student-Builder-Group-HITMS/website",
+                href: "https://github.com/AWS-Student-Builder-Group-HITMS",
                 label: "GitHub",
               },
               {
