@@ -390,7 +390,7 @@ function CaptainSpotlight() {
   const { open } = useMemberModal();
 
   return (
-    <section className="relative max-w-7xl mx-auto px-4 md:px-8 -mt-2 mb-10 md:mb-14">
+    <section className="relative max-w-7xl mx-auto px-4 md:px-8 mt-8 mb-10 md:mb-14">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
