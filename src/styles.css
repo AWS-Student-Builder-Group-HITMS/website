@@ -223,8 +223,8 @@
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-  .animate-marquee { animation: marquee-x 40s linear infinite; }
-  .animate-marquee-rev { animation: marquee-x 50s linear infinite reverse; }
+  .animate-marquee { animation: marquee-x 10s linear infinite reverse; }
+.animate-marquee-rev { animation: marquee-x 10s linear infinite reverse; }
   /* === Simple minimal cursor ================================= */
   @media (hover: none) {
     .cursor-ring, .cursor-core { display: none !important; }

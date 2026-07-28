@@ -684,7 +684,7 @@ const galleryItems: {
   {
     label: "Add photo: Workshop",
     icon: Cloud,
-    src: undefined,
+    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1785261744/meeting_mkrtxv.jpg",
     shape: "rounded-full",
     span: "col-span-1 row-span-1",
   },
@@ -698,14 +698,15 @@ const galleryItems: {
   {
     label: "Add photo: Certification win",
     icon: Award,
-    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966919/WhatsApp%20Image%202026-07-13%20at%207.31.27%20PM%20%282%29.jpg",
     shape: "rounded-3xl",
+    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1785262423/member_q1wkcj.jpg",
+
     span: "col-span-1 row-span-2",
   },
   {
     label: "Add photo: Speaker session",
     icon: Sparkles,
-    src: undefined,
+    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966919/WhatsApp%20Image%202026-07-13%20at%207.31.27%20PM%20%282%29.jpg",
     shape: "rounded-full",
     span: "col-span-1 row-span-1",
   },

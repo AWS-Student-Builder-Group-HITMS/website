@@ -6,14 +6,16 @@ import * as z from "zod";
 import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
 import {
-  MessageCircle,
   Send,
   Linkedin,
   Instagram,
   Users,
   CalendarDays,
+  MessageCircle,
   CheckCircle,
   AlertCircle,
+  ArrowUpRight,
+  MoveRight,
 } from "lucide-react";
 import { useMeta } from "@/hooks/useMeta";
 import { useContactForm, type ContactFormInput } from "@/hooks/useContactForm";
@@ -85,8 +87,53 @@ export default function Contact() {
         subtitle="Got a question, idea or want to partner with us? Drop a line — our Student Builder Group Leaders read every message."
       />
 
+      {/* Meetup Callout — top priority section for event registration */}
+      <section className="max-w-6xl mx-auto px-4 md:px-8 pt-16 -mt-4 mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative flex flex-col md:flex-row items-center md:items-center justify-between gap-6 rounded-3xl border border-primary/40 p-8 md:p-10 bg-gradient-to-br from-[oklch(0.769_0.165_64.5/0.25)] via-card to-[oklch(0.35_0.15_150/0.4)] overflow-hidden"
+        >
+          <div className="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-[oklch(0.769_0.165_64.5/0.25)] blur-3xl" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+
+          <div className="relative flex items-start gap-4 max-w-2xl">
+            <div className="h-12 w-12 shrink-0 rounded-xl bg-primary/10 border border-primary/30 grid place-items-center text-primary">
+              <CalendarDays size={22} />
+            </div>
+            <div>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-primary font-bold mb-1">
+                Official Event Registration
+              </p>
+              <h2 className="text-xl md:text-2xl font-black tracking-tight font-display">
+                Register for Events on Meetup
+              </h2>
+              <p className="text-sm text-muted-foreground mt-2">
+                All AWS Student Builder Group HITMS workshops, meetups, and sessions are hosted and
+                registered through our official{" "}
+                <span className="text-foreground font-semibold">Meetup</span> page — it's the
+                fastest way to reserve your spot, see upcoming events, and get reminders before we
+                go live. Join our Meetup group to stay in the loop and never miss a session.
+              </p>
+            </div>
+          </div>
+
+          <a
+            href={MEETUP_URL}
+            target="_blank"
+            rel="noreferrer"
+            data-hover
+            data-cursor="JOIN"
+            className="relative inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-black tracking-wider hover:shadow-[0_0_30px_oklch(0.769_0.165_64.5/0.7)] transition shrink-0"
+          >
+            JOIN ON MEETUP <ArrowUpRight size={16} />
+          </a>
+        </motion.div>
+      </section>
+
       {/* Main Grid: QR + Info */}
-      <section className="max-w-6xl mx-auto px-4 md:px-8 pt-16 -mt-4 mb-10 grid md:grid-cols-[1fr_1.5fr] gap-6">
+      <section className="max-w-6xl mx-auto px-4 md:px-8 mb-10 grid md:grid-cols-[1fr_1.5fr] gap-6">
         {/* Left: WhatsApp QR Card */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -132,7 +179,7 @@ export default function Contact() {
               data-cursor="JOIN"
               className="inline-flex items-center gap-2 px-6 py-3 w-full justify-center rounded-xl bg-primary text-primary-foreground font-black tracking-wider hover:shadow-[0_0_30px_oklch(0.769_0.165_64.5/0.7)] transition"
             >
-              JOIN NOW <Send size={14} className="group-hover:translate-x-1 transition" />
+              JOIN NOW <MessageCircle size={14} className="group-hover:translate-x-1 transition" />
             </a>
           </div>
         </motion.div>
@@ -142,16 +189,22 @@ export default function Contact() {
           {/* Contact Form / Talk to Builders Toggle */}
           {!showForm ? (
             <motion.button
+              type="button"
               onClick={() => setShowForm(true)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.98 }}
               data-hover
-              className="relative p-8 rounded-2xl border border-border bg-card overflow-hidden flex-1 text-left hover:border-primary/60 transition group"
+              data-cursor="OPEN"
+              aria-label="Open the contact form"
+              className="relative flex items-center gap-5 p-8 rounded-2xl border border-border bg-card overflow-hidden flex-1 text-left cursor-pointer hover:border-primary hover:shadow-[0_15px_50px_-15px_oklch(0.769_0.165_64.5/0.4)] transition-all group"
             >
               <div className="absolute inset-0 aurora-bg opacity-60 pointer-events-none" />
               <div className="absolute -top-px inset-x-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-              <div className="relative">
+
+              <div className="relative flex-1">
                 <p className="text-[10px] tracking-[0.3em] uppercase text-primary font-bold mb-2">
                   Direct Line
                 </p>
@@ -162,6 +215,17 @@ export default function Contact() {
                   Fill out the form below and we'll get back to you within 24-48 hours. For urgent
                   matters, reach us on WhatsApp.
                 </p>
+                <span className="relative inline-flex items-center gap-2 mt-4 text-xs font-black tracking-wider uppercase text-primary">
+                  Tap to open form
+                  <MoveRight
+                    size={14}
+                    className="group-hover:translate-x-1.5 transition-transform"
+                  />
+                </span>
+              </div>
+
+              <div className="relative shrink-0 h-14 w-14 rounded-full bg-primary/10 border border-primary/30 grid place-items-center text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:rotate-12 transition-all">
+                <Send size={20} />
               </div>
             </motion.button>
           ) : (
@@ -299,7 +363,7 @@ export default function Contact() {
             </motion.div>
           )}
 
-          {/* Social + Meetup Links Grid */}
+          {/* Social Links Grid (Meetup now lives in its own top section, not duplicated here) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -360,12 +424,5 @@ const socialLinks = [
     sub: "Builders community",
     href: WHATSAPP_URL,
     accent: "green",
-  },
-  {
-    Icon: CalendarDays,
-    label: "Meetup",
-    sub: "Events & workshops",
-    href: MEETUP_URL,
-    accent: "red",
   },
 ];

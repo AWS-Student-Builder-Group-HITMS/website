@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import logo from "@/assets/aws-hitms-logo.jpeg";
+import { Hero3D } from "@/components/Hero3D"; // apna actual path check kar lein
 
 export function PageHeader({
   eyebrow,
@@ -11,8 +12,11 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <section className="relative pt-24 pb-16 overflow-hidden aurora-bg">
+    <section className="relative pt-24 pb-16 overflow-hidden">
+      {/* Same background as hero */}
+      <Hero3D />
       <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+
       <div className="relative max-w-5xl mx-auto px-4 md:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.6 }}
@@ -24,6 +28,7 @@ export function PageHeader({
             <img src={logo} alt="logo" className="relative h-16 w-16 rounded-lg animate-float-3d" />
           </div>
         </motion.div>
+
         {eyebrow && (
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -33,6 +38,7 @@ export function PageHeader({
             {eyebrow}
           </motion.p>
         )}
+
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -45,6 +51,7 @@ export function PageHeader({
             </span>
           ))}
         </motion.h1>
+
         {subtitle && (
           <motion.p
             initial={{ opacity: 0, y: 20 }}

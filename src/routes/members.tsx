@@ -64,7 +64,7 @@ const captain: Member = {
   role: "Student Builder Group Captain",
   image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966878/231%201.png",
   roll: "24BSSW041",
-  bio: `Hanzala Salaheen is an IBM-certified AI Backend Engineer at Geeks Root, specializing in RAG and intelligent automation. He leads the AWS Student Builder Group at HITMS, where he mentors peers and drives technical growth. He builds scalable AI solutions—including autonomous agents and AWS pipelines—while pursuing his Software Engineering degree.`,
+  bio: `A Full Stack AI Engineer specializing in RAG and intelligent automation. Experienced in architecting robust backend systems, scalable AI solutions, and AWS pipelines. Committed to building autonomous agents and driving technical growth to create seamless intelligent applications.`,
   github: "https://github.com/hanzi448",
   linkedin: "https://www.linkedin.com/in/hanzala-salaheen",
 };
@@ -304,6 +304,7 @@ const teams: Team[] = [
         name: "Mariam",
         role: "Creative",
         roll: "24BSSW029",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1785262591/MaryamSami_w9bex8.png",
         bio: "A graphic designer crafting bold, purposeful visual identities. Brings two years of experience turning ideas into striking, memorable design. Passionate about shaping concepts into visuals that communicate with clarity and impact.",
         github: "https://github.com/mmAS13",
         linkedin: "https://www.linkedin.com/in/mariammemon13/",

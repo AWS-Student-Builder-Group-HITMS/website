@@ -18,8 +18,8 @@ export function Footer() {
             </div>
           </div>
           <p className="text-sm text-muted-foreground">
-            Same community. Stronger vision. Bigger future. Empowering the next generation of cloud
-            builders.
+            AWS SBG HITMS is a student-led tech community focused on Cloud, AI & Development to
+            empower future builders.
           </p>
         </div>
         <div>

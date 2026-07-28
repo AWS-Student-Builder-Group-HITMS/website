@@ -36,9 +36,9 @@ export function Navbar() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-15 flex items-center justify-between relative">
         {/* Brand Logo & Name */}
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group z-10">
           <div className="relative overflow-hidden rounded-xl p-0.5 border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent group-hover:border-primary/50 transition-colors">
             <img
               src={logo}
@@ -56,8 +56,8 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-muted/50 p-1.5 rounded-full border border-border/50 backdrop-blur-md shadow-inner">
+        {/* Desktop Nav Links (Centered) */}
+        <nav className="hidden md:flex items-center gap-1 bg-muted/50 p-1.5 rounded-full border border-border/50 backdrop-blur-md shadow-inner absolute left-1/2 -translate-x-1/2">
           {links.map((l) => {
             const active = location.pathname === l.to;
             return (
@@ -83,25 +83,16 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Action Button / CTA or Spacer */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity shadow-sm shadow-primary/20"
+        {/* Mobile Menu Trigger & Right side spacer if needed */}
+        <div className="flex items-center gap-2 z-10">
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+            aria-label="Toggle Menu"
           >
-            <Sparkles className="w-4 h-4" />
-            <span>Join Us</span>
-          </Link>
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-
-        {/* Mobile Menu Trigger */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
-          aria-label="Toggle Menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
 
       {/* Mobile Dropdown Menu */}
