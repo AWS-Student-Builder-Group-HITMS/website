@@ -81,7 +81,7 @@ const teams: Team[] = [
       name: "Abdul Rafay",
       role: "Lead · Technical",
       image:
-        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966906/me%20-%20Abdul%20Rafay%20Khalid%20Jameel.jpg",
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1785265811/me_-_Abdul_Rafay_Khalid_Jameel-removebg-preview_pshjxc.png",
       roll: "24BSSW038",
       bio: "A Full Stack Developer passionate about creating modern, user-focused digital experiences. Expert in writing clean, scalable code to solve complex problems. Brings a consistent track record of delivering high-quality, responsive applications.",
       github: "https://github.com/ARafaykhalid",
