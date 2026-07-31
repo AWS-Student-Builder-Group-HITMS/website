@@ -308,7 +308,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* GALLERY — beautiful shapes + hover reveal, ready for your event photos */}
+      {/* GALLERY */}
       <section className="relative py-24 px-4 md:px-8 overflow-hidden">
         <FlyingIcons density={0.4} />
         <div className="relative max-w-7xl mx-auto">
@@ -325,8 +325,6 @@ export default function Index() {
             </p>
           </div>
 
-          {/* To add a photo: set `src` on the matching item in `galleryItems` below,
-              e.g. src: "/images/gallery/hackathon-1.jpg" */}
           <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[170px] gap-5">
             {galleryItems.map((item, i) => (
               <motion.div
@@ -348,9 +346,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* WHAT'S COMING NEXT — teaser section instead of specific event cards,
-          since exact dates aren't locked in yet. Keeps the "join us" energy
-          without showing placeholder/fake event info. */}
       {!HIDE_COMING_NEXT && (
         <section className="relative py-24 px-4 md:px-8 overflow-hidden">
           <FlyingIcons density={0.4} />
@@ -436,7 +431,6 @@ export default function Index() {
             </Link>
           </div>
           <div className="relative">
-            {/* center timeline line */}
             <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent md:-translate-x-1/2" />
             <div className="flex flex-col gap-10 md:gap-16">
               {programs.map((p, i) => {
@@ -446,7 +440,6 @@ export default function Index() {
                     key={p.tag}
                     className="relative md:grid md:grid-cols-2 md:items-center md:gap-12"
                   >
-                    {/* node dot on the center line */}
                     <div className="absolute left-4 md:left-1/2 top-8 md:top-1/2 h-3 w-3 -translate-x-1/2 md:-translate-y-1/2 rounded-full bg-primary shadow-[0_0_18px_oklch(0.769_0.165_64.5/0.8)] z-10" />
                     <motion.div
                       initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
@@ -531,12 +524,6 @@ export default function Index() {
   );
 }
 
-/**
- * ImageSlot — reusable image placeholder.
- * Pass a `src` and it renders the real photo. Leave `src` empty/undefined
- * and it renders a soft gradient placeholder with an icon + label, so the
- * layout looks finished today and is a one-line change once you have photos.
- */
 function ImageSlot({
   src,
   label,
@@ -581,7 +568,7 @@ const features = [
   {
     icon: Users,
     title: "Global Network",
-    desc: "Connect with 99K+ builders across 35+ regions, all in one community.",
+    desc: "Connect with 5K+ builders across regions, all in one community.",
   },
   {
     icon: Rocket,
@@ -619,8 +606,6 @@ const whoWeAre = [
   "Peers and mentors who grow together, one project at a time.",
 ];
 
-// Pillars shown in the "What's Coming Next" teaser — categories only, no fixed
-// dates, since specific upcoming events aren't confirmed yet.
 const comingNextPillars = [
   { icon: Rocket, label: "Hackathons" },
   { icon: Cloud, label: "Workshops" },
@@ -660,13 +645,11 @@ const orbitIcons = [
 ];
 
 const heroStats = [
-  { n: "300+", l: "Builders" },
-  { n: "20+", l: "Workshops" },
-  { n: "99K+", l: "Global Network" },
+  { n: "500+", l: "Builders" },
+  { n: "3+", l: "Events" },
+  { n: "5K+", l: "Global Network" },
 ];
 
-// Gallery tiles — mix of shapes for visual interest. Set `src` on any item
-// once you have a photo, e.g. src: "/images/gallery/workshop-1.jpg"
 const galleryItems: {
   label: string;
   icon: typeof ImageIcon;
@@ -692,7 +675,7 @@ const galleryItems: {
     label: "Add photo: Team huddle",
     icon: Users,
     src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966885/audience.jpg",
-    shape: "[clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]",
+    shape: "rounded-2xl",
     span: "col-span-1 row-span-1",
   },
   {
@@ -700,7 +683,6 @@ const galleryItems: {
     icon: Award,
     shape: "rounded-3xl",
     src: "https://res.cloudinary.com/txg3hveh/image/upload/v1785262423/member_q1wkcj.jpg",
-
     span: "col-span-1 row-span-2",
   },
   {

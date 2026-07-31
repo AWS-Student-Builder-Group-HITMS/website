@@ -3,28 +3,11 @@ import { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
 import { useMeta } from "@/hooks/useMeta";
-import {
-  Calendar,
-  MapPin,
-  ArrowRight,
-  Instagram,
-  Linkedin,
-  MessageCircle,
-  Sparkles,
-  Clock,
-  Globe,
-  X,
-  Eye,
-} from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Instagram, Linkedin, Sparkles, X } from "lucide-react";
 
-const WHATSAPP_URL = "https://chat.whatsapp.com/FgyyG0kLNIKIovBwenLagq";
 const INTRO_INSTAGRAM =
   "https://www.instagram.com/reel/DUf-IfwAdA2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==";
 const INTRO_LINKEDIN =
-  "https://www.linkedin.com/posts/aws-student-builder-group-hitms_awsdevelopers-awscloudclubs-hitms-activity-7425653263510724609-qI3x";
-const TECHVERSE_INSTAGRAM =
-  "https://www.instagram.com/reel/Ct0g8k7v6rA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==";
-const TECHVERSE_LINKEDIN =
   "https://www.linkedin.com/posts/aws-student-builder-group-hitms_awsdevelopers-awscloudclubs-hitms-activity-7425653263510724609-qI3x";
 
 export default function Events() {
@@ -48,6 +31,7 @@ export default function Events() {
         "Attendees left with a clear picture of what the year ahead looks like, direct access to team leads through a live Q&A, and a preview of TechVerse-26. The event closed with sign-ups for the WhatsApp community, setting the tone for everything AWS SBG HITMS has built since.",
       date: "6 Feb 2026 · 11:00 AM",
       type: "HITMS Auditorium",
+      banner: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966897/introductory.jpg",
       images: [
         "https://res.cloudinary.com/txg3hveh/image/upload/v1783966897/introductory.jpg",
         "https://res.cloudinary.com/txg3hveh/image/upload/v1783966890/captain_speech.jpg",
@@ -58,7 +42,8 @@ export default function Events() {
           label: "Instagram",
           url: INTRO_INSTAGRAM,
           icon: Instagram,
-          color: "from-[oklch(0.65_0.22_25)] to-[oklch(0.55_0.22_280)] text-white shadow-md",
+          color:
+            "bg-gradient-to-r from-[oklch(0.65_0.22_25)] to-[oklch(0.55_0.22_280)] text-white shadow-md",
         },
         {
           label: "LinkedIn",
@@ -81,6 +66,7 @@ export default function Events() {
         "Prizes were awarded to the top-performing teams, and the session opened up honest conversations about building a long-term career in the digital age, mentorship, and contributing to real AWS projects through the Student Builder Group. The recording and resources were shared afterward with the full community.",
       date: "June 29, 2026",
       type: "Online Session",
+      banner: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966911/overview.jpg",
       images: [
         "https://res.cloudinary.com/txg3hveh/image/upload/v1783966911/overview.jpg",
         "https://res.cloudinary.com/txg3hveh/image/upload/v1783966913/session.jpg",
@@ -91,7 +77,8 @@ export default function Events() {
           label: "Instagram",
           url: INTRO_INSTAGRAM,
           icon: Instagram,
-          color: "from-[oklch(0.65_0.22_25)] to-[oklch(0.55_0.22_280)] text-white shadow-md",
+          color:
+            "bg-gradient-to-r from-[oklch(0.65_0.22_25)] to-[oklch(0.55_0.22_280)] text-white shadow-md",
         },
         {
           label: "LinkedIn",
@@ -101,43 +88,8 @@ export default function Events() {
         },
       ],
     },
-    {
-      id: "online-session-tba",
-      tag: "ONLINE SESSION",
-      title: "Title To Be Announced",
-      desc: "A hands-on online session with expert builders exploring Cloud Services & Serverless. Full details and speaker lineup drops soon on our WhatsApp.",
-      date: "TBA",
-      type: "Online Session",
-      isTba: true,
-      links: [
-        {
-          label: "Join WhatsApp",
-          url: WHATSAPP_URL,
-          icon: MessageCircle,
-          color: "bg-emerald-600 text-white",
-        },
-      ],
-    },
-    {
-      id: "cloud-workshop-tba",
-      tag: "WORKSHOP",
-      title: "Title To Be Announced",
-      desc: "An intensive building workshop focusing on deploying application stacks and scaling with AWS resources. Mark your calendars!",
-      date: "TBA",
-      type: "TBA",
-      isTba: true,
-      links: [
-        {
-          label: "Join WhatsApp",
-          url: WHATSAPP_URL,
-          icon: MessageCircle,
-          color: "bg-emerald-600 text-white",
-        },
-      ],
-    },
   ];
 
-  /* Only addition: which event's blog-style detail page is currently open */
   const [active, setActive] = useState<(typeof cards)[number] | null>(null);
 
   useEffect(() => {
@@ -160,29 +112,17 @@ export default function Events() {
           subtitle="Workshops, hackathons and speaker sessions — designed by students, for students."
         />
 
-        {/* 4 EQUAL SIZED CARDS GRID */}
-        <section className="max-w-7xl mx-auto px-4 md:px-8 pb-24 pt-8">
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
-            <div>
-              <p className="text-[10px] tracking-[0.4em] uppercase text-primary font-bold mb-2 inline-flex items-center gap-2">
-                <Sparkles size={12} /> Live Roadmap
-              </p>
-              <h2 className="text-3xl md:text-4xl font-black tracking-tight font-display">
-                Featured & Upcoming Events
-              </h2>
-            </div>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              data-hover
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition"
-            >
-              <MessageCircle size={14} /> Join WhatsApp for Updates
-            </a>
+        <section className="max-w-3xl mx-auto px-4 md:px-8 pb-24 pt-8">
+          <div className="mb-12 text-center md:text-left">
+            <p className="text-[10px] tracking-[0.4em] uppercase text-primary font-bold mb-2 inline-flex items-center gap-2">
+              <Sparkles size={12} /> Live Roadmap
+            </p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight font-display">
+              Featured & Upcoming Events
+            </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-10">
             {cards.map((e, i) => (
               <motion.article
                 key={e.id}
@@ -190,76 +130,54 @@ export default function Events() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -6, rotateX: 2, rotateY: -2 }}
+                whileHover={{ y: -6 }}
                 data-hover
-                className="group relative flex flex-col justify-between rounded-2xl border border-border bg-card overflow-hidden p-6 preserve-3d perspective-1000 shine-sweep h-full min-h-[380px]"
+                onClick={() => setActive(e)}
+                className="group relative rounded-[2.5rem] border border-border/80 bg-card p-0 cursor-pointer shadow-2xl overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-primary/55"
               >
-                <div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.769_0.165_64.5/0.08)] via-transparent to-[oklch(0.72_0.13_220/0.08)] opacity-50 group-hover:opacity-100 transition duration-500" />
-                  <div className="absolute -bottom-20 -right-20 h-48 w-48 rounded-full bg-primary/10 blur-3xl group-hover:bg-primary/35 transition duration-700" />
-                  <div className="absolute -top-px inset-x-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" />
+                <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all duration-500 pointer-events-none" />
 
-                  <div className="relative flex items-start justify-between mb-4">
-                    <span className="text-[9px] tracking-[0.25em] uppercase font-bold text-primary">
-                      {e.tag}
-                    </span>
-                    <span
-                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider ${
-                        e.isTba
-                          ? "bg-primary/10 text-primary border border-primary/20"
-                          : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                      }`}
-                    >
-                      {e.isTba ? "TBA" : "Active"}
-                    </span>
+                <div className="flex flex-col">
+                  {/* Banner Image Container */}
+                  <div className="relative w-full overflow-hidden bg-muted/20 border-b border-border/40 flex items-center justify-center">
+                    <img
+                      src={e.banner}
+                      alt={e.title}
+                      className="w-full h-auto object-contain transition duration-700 group-hover:scale-[1.01]"
+                    />
                   </div>
 
-                  <h3 className="relative text-xl font-black tracking-tight font-display mt-2 group-hover:text-gradient-primary transition min-h-[56px] flex items-center">
-                    {e.title}
-                  </h3>
-                  <p className="relative text-xs text-muted-foreground mt-3 line-clamp-4 leading-relaxed">
-                    {e.desc}
-                  </p>
-                </div>
+                  {/* Content Container with Highlighted Description Box */}
+                  <div className="flex flex-col justify-between p-6 md:p-8 bg-card relative">
+                    <div>
+                      <h3 className="text-2xl md:text-4xl font-black tracking-tight font-display mb-3 group-hover:text-primary transition-colors duration-300">
+                        {e.title}
+                      </h3>
+                      <div className="w-12 h-1 bg-primary rounded-full mb-4 shadow-sm" />
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed bg-muted/30 p-4 rounded-xl border border-border/40">
+                        {e.desc}
+                      </p>
+                    </div>
 
-                <div className="relative mt-6 pt-4 border-t border-border/60">
-                  <div className="flex flex-col gap-2 mb-4 text-[10px] text-muted-foreground">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Calendar size={11} className="text-primary" /> {e.date}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <MapPin size={11} className="text-primary" /> {e.type}
-                    </span>
-                  </div>
+                    <div className="flex flex-wrap items-center justify-between gap-4 mt-8 pt-6 border-t border-border/60">
+                      <div className="flex flex-wrap gap-4 text-xs font-semibold text-muted-foreground">
+                        <span className="inline-flex items-center gap-1.5 bg-muted/50 px-3 py-1.5 rounded-lg border border-border/50">
+                          <Calendar size={14} className="text-primary" /> {e.date}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 bg-muted/50 px-3 py-1.5 rounded-lg border border-border/50">
+                          <MapPin size={14} className="text-primary" /> {e.type}
+                        </span>
+                      </div>
 
-                  {/* View button — only for events that already have a full story (not for "coming soon" TBA cards) */}
-                  {!e.isTba && (
-                    <button
-                      onClick={() => setActive(e)}
-                      data-hover
-                      className="w-full mb-2 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-md border border-primary/40 bg-primary/10 text-[10px] font-bold uppercase tracking-wider text-primary hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                    >
-                      <Eye size={12} /> View
-                    </button>
-                  )}
-
-                  <div className="flex flex-col gap-2">
-                    {e.links.map((link) => (
-                      <a
-                        key={link.label}
-                        href={link.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-md font-bold text-[10px] transition duration-300 ${link.color}`}
-                      >
-                        <link.icon size={11} />
-                        {link.label}
-                      </a>
-                    ))}
+                      <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary group-hover:translate-x-1 transition-transform">
+                        <span>Explore Story</span>
+                        <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground grid place-items-center shadow-md">
+                          <ArrowRight size={16} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-primary-glow to-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
               </motion.article>
             ))}
           </div>
@@ -273,11 +191,6 @@ export default function Events() {
   );
 }
 
-/* ────────────────────────────────────────────────────────────── */
-/* Blog-style detail page — collage layout: content on the left, an
-   overlapping photo cluster on the right (same visual idea as the
-   reference), but using the site's existing color theme throughout. */
-
 type EventCard = {
   id: string;
   tag: string;
@@ -288,18 +201,15 @@ type EventCard = {
   overview?: string;
   purpose?: string;
   outcome?: string;
-  isTba?: boolean;
+  banner?: string;
   images?: string[];
   links: { label: string; url: string; icon: typeof Instagram; color: string }[];
 };
 
-/* Placeholder collage images — swap these for real Cloudinary URLs later,
-   the shapes/sizes/positions below are already fixed so nothing else needs to change. */
 const collagePlaceholders = [
   "https://placehold.co/300x300/1a1a1a/e2b93b?text=1",
   "https://placehold.co/260x340/1a1a1a/e2b93b?text=2",
   "https://placehold.co/300x220/1a1a1a/e2b93b?text=3",
-  "https://placehold.co/240x240/1a1a1a/e2b93b?text=4",
 ];
 
 function StorySection({
@@ -316,10 +226,14 @@ function StorySection({
   imageSide: "left" | "right";
 }) {
   return (
-    <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
+    <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
       <div className={imageSide === "left" ? "md:order-1" : "md:order-2"}>
-        <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-          <img src={image} alt={alt} className="block w-full h-auto" />
+        <div className="rounded-2xl overflow-hidden border border-border/80 shadow-2xl bg-card">
+          <img
+            src={image}
+            alt={alt}
+            className="block w-full h-auto object-cover hover:scale-105 transition duration-500"
+          />
         </div>
       </div>
       <div className={imageSide === "left" ? "md:order-2" : "md:order-1"}>
@@ -348,14 +262,12 @@ function EventDetailPage({ event, onClose }: { event: EventCard; onClose: () => 
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className="relative w-full flex flex-col overflow-hidden"
       >
-        {/* ambient background — same visual language as the rest of the site */}
         <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full blur-3xl opacity-30 pointer-events-none bg-primary/40" />
         <div className="absolute -bottom-40 -right-24 h-[26rem] w-[26rem] rounded-full blur-3xl opacity-20 pointer-events-none bg-[oklch(0.72_0.13_220/0.4)]" />
         <div className="absolute inset-0 aurora-bg opacity-15 pointer-events-none" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
 
-        {/* nav */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-6 md:px-10 py-4 backdrop-blur bg-background/60 border-b border-border/60">
+        <div className="sticky top-0 z-25 flex items-center justify-between px-4 sm:px-6 md:px-10 py-4 backdrop-blur bg-background/80 border-b border-border/60">
           <button
             onClick={onClose}
             data-hover
@@ -373,28 +285,21 @@ function EventDetailPage({ event, onClose }: { event: EventCard; onClose: () => 
         </div>
 
         <div className="relative flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-10 md:py-14">
-          {/* Hero — title, tag, meta, links */}
-          <div className="max-w-2xl mb-12 md:mb-16">
+          <div className="max-w-3xl mb-12 md:mb-16">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-[10px] tracking-[0.3em] uppercase font-black text-primary">
                 {event.tag}
               </span>
-              <span
-                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider ${
-                  event.isTba
-                    ? "bg-primary/10 text-primary border border-primary/20"
-                    : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                }`}
-              >
-                {event.isTba ? "TBA" : "Active"}
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                Active
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight font-display leading-[1.05] mb-5">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight font-display leading-[1.05] mb-5">
               <span className="text-gradient-primary">{event.title}</span>
             </h1>
 
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="text-base md:text-xl text-muted-foreground leading-relaxed mb-6">
               {event.desc}
             </p>
 
@@ -424,8 +329,7 @@ function EventDetailPage({ event, onClose }: { event: EventCard; onClose: () => 
             </div>
           </div>
 
-          {/* Overview / Purpose / Outcome — each a distinct section, image and text alternating sides */}
-          <div className="space-y-14 md:space-y-20">
+          <div className="space-y-16 md:space-y-24">
             {event.overview && (
               <StorySection
                 eyebrow="Overview"

@@ -111,7 +111,8 @@ const teams: Team[] = [
       {
         name: "Ahmed Mujtaba",
         role: "Technical",
-        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966882/Ahmed%20Mujtaba.png",
+        image:
+          "https://res.cloudinary.com/txg3hveh/image/upload/v1785534745/Ahmed_Mujtaba-removebg-preview_rfenuq.png",
         roll: "24BSCS026",
         bio: "A passionate Computer Science student specializing in building responsive and aesthetic web interfaces. Expert in React, Tailwind CSS, and JavaScript. Focused on transforming design concepts into seamless user experiences across all devices.",
         github: "https://github.com/mujtabakhan24",
@@ -175,7 +176,7 @@ const teams: Team[] = [
     accent: "from-rose-500/35 to-primary/30",
     glow: "oklch(0.65 0.22 25 / 0.55)",
     lead: {
-      name: "Ashir Ali",
+      name: "Aashir Ali",
       role: "Lead · Marketing",
       image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966880/77%201.png",
       roll: "24BSSWO34",
@@ -196,7 +197,8 @@ const teams: Team[] = [
       {
         name: "Farwa Zehra",
         role: "Marketing",
-        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966894/Farwa%20Zehra.png",
+        image:
+          "https://res.cloudinary.com/txg3hveh/image/upload/v1785534335/Farwa_Zehra_OR_and_Market_-removebg-preview_1_skmnvs.png",
         roll: "25BSCS002",
         bio: "An aspiring Cloud professional exploring the intersection of technology and product strategy. Focused on architecting cloud-native solutions for scalable digital products. Committed to bridging the gap between high-level technical innovation and design.",
         github: "https://github.com/farwaxzehra",
@@ -205,7 +207,7 @@ const teams: Team[] = [
       {
         name: "Hassan Irfan",
         role: "Marketing",
-        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966903/Mask%20group.png",
+        image: "https://res.cloudinary.com/txg3hveh/image/upload/v1785534531/Mask_group_cjumtv.png",
         roll: "24BSCS033",
         github: "https://github.com/Hassan-Irfan-07",
         linkedin: "https://www.linkedin.com/in/hassanirfan07",
@@ -224,7 +226,7 @@ const teams: Team[] = [
       name: "Ayesha Shaikh",
       role: "Lead · Events",
       image:
-        "https://res.cloudinary.com/txg3hveh/image/upload/v1783966887/Ayesha_Shaikh_Event_Lead_-removebg-preview%201.png",
+        "https://res.cloudinary.com/txg3hveh/image/upload/v1785534533/Ayesha_Shaikh_Event_Lead_-removebg-preview_1_go86y6.png",
       roll: "24BSSW022",
       bio: "A Software Engineering student and Event Management Lead for AWS SBG and ACM. Expert in coordinating large-scale events through strong leadership. Thrives on blending technical knowledge with strategic planning to ensure project excellence.",
       github: "https://github.com/AyeshaShaikh-19",
@@ -252,7 +254,7 @@ const teams: Team[] = [
           "https://www.linkedin.com/in/muhammad-hasan-91809233a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       },
       {
-        name: "Shahmeer Shaikh",
+        name: "Muhammad Shahmeer",
         role: "Events",
         image:
           "https://res.cloudinary.com/txg3hveh/image/upload/v1783966914/Shameer_event_-removebg-preview%201.png",
@@ -458,7 +460,7 @@ function CaptainSpotlight() {
 
             {/* Crown badge below avatar */}
             <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-[10px] tracking-widest uppercase font-black shadow-[0_0_20px_oklch(0.769_0.165_64.5/0.8)]">
-              <Crown size={12} /> Captain
+              <Crown size={12} /> Leader
             </div>
           </div>
 
@@ -512,7 +514,7 @@ function CaptainSpotlight() {
             {[
               { l: "Teams", v: "5", i: ShieldCheck },
               { l: "Members", v: "20", i: Star },
-              { l: "Year", v: "26", i: Rocket },
+              { l: "Year", v: "2026", i: Rocket },
             ].map((s) => (
               <div
                 key={s.l}
