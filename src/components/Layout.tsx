@@ -10,7 +10,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <BootIntro />
       <CustomCursor />
       <Navbar />
-      <main className="pt-16">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );

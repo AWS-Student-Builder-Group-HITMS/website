@@ -12,7 +12,7 @@ export function PageHeader({
   subtitle?: string;
 }) {
   return (
-    <section className="relative pt-24 pb-16 overflow-hidden">
+    <section className="relative min-h-[60vh] mask-b-from-90% mask-b-to-100% items-center flex pt-25 overflow-hidden">
       {/* Same background as hero */}
       <Hero3D />
       <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />

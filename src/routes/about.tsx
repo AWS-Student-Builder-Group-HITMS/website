@@ -6,7 +6,7 @@ import { useMeta } from "@/hooks/useMeta";
 
 export default function About() {
   useMeta({
-    title: "About — AWS Student Builder Group HITMS",
+    title: "About | AWS Student Builder Group HITMS",
     description: "Our story, mission and vision. Where builders shape tomorrow's tech.",
   });
 

@@ -52,7 +52,7 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   useMeta({
-    title: "Contact — AWS SBG HITMS",
+    title: "Contact | AWS SBG HITMS",
     description: "Get in touch with AWS Student Builder Group HITMS leaders.",
   });
 
@@ -84,7 +84,7 @@ export default function Contact() {
       <PageHeader
         eyebrow="Connect"
         title="Let's Build Something Together"
-        subtitle="Got a question, idea or want to partner with us? Drop a line — our Student Builder Group Leaders read every message."
+        subtitle="Got a question, idea or want to partner with us? Drop a line, our Student Builder Group Leaders read every message."
       />
 
       {/* Meetup Callout — top priority section for event registration */}
@@ -112,7 +112,7 @@ export default function Contact() {
               <p className="text-sm text-muted-foreground mt-2">
                 All AWS Student Builder Group HITMS workshops, meetups, and sessions are hosted and
                 registered through our official{" "}
-                <span className="text-foreground font-semibold">Meetup</span> page — it's the
+                <span className="text-foreground font-semibold">Meetup</span> page, it's the
                 fastest way to reserve your spot, see upcoming events, and get reminders before we
                 go live. Join our Meetup group to stay in the loop and never miss a session.
               </p>

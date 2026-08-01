@@ -303,7 +303,7 @@ const teams: Team[] = [
         linkedin: "https://www.linkedin.com/in/maryam-s-78406b363",
       },
       {
-        name: "Mariam",
+        name: "Mariam Memon",
         role: "Creative",
         roll: "24BSSW029",
         image: "https://res.cloudinary.com/txg3hveh/image/upload/v1785262591/MaryamSami_w9bex8.png",
@@ -329,7 +329,7 @@ const useMemberModal = () => useContext(MemberModalContext);
 
 export default function Members() {
   useMeta({
-    title: "The Architects — AWS Student Builder Group HITMS",
+    title: "The Architects | AWS Student Builder Group HITMS",
     description: "Meet the captain and elite teams of AWS Student Builder Group HITMS.",
   });
 
@@ -360,13 +360,22 @@ export default function Members() {
 
         <CaptainSpotlight />
 
-        <section className="relative py-6 mt-10 md:mt-14 border-y border-border/60 bg-card/30 overflow-hidden">
-          <div className="flex gap-10 whitespace-nowrap animate-marquee-rev text-xl font-bold uppercase tracking-widest">
-            {[...allNames, ...allNames].map((n, i) => (
-              <span key={i} className="inline-flex items-center gap-10 text-muted-foreground/60">
-                {n} <Star size={14} className="text-primary" />
-              </span>
-            ))}
+        <section className="relative py-6 mt-10 md:mt-14 border-y border-border/60 bg-card/30 overflow-hidden select-none">
+          <div className="flex w-max animate-marquee-rev text-xl font-bold uppercase tracking-widest">
+            <div className="flex shrink-0 items-center gap-8 sm:gap-12 pr-8 sm:pr-12">
+              {allNames.map((n, i) => (
+                <span key={i} className="inline-flex items-center gap-8 sm:gap-12 text-muted-foreground/70">
+                  {n} <Star size={14} className="text-primary shrink-0" />
+                </span>
+              ))}
+            </div>
+            <div className="flex shrink-0 items-center gap-8 sm:gap-12 pr-8 sm:pr-12" aria-hidden="true">
+              {allNames.map((n, i) => (
+                <span key={`dup-${i}`} className="inline-flex items-center gap-8 sm:gap-12 text-muted-foreground/70">
+                  {n} <Star size={14} className="text-primary shrink-0" />
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 

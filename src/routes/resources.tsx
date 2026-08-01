@@ -14,7 +14,7 @@ import { useMeta } from "@/hooks/useMeta";
 
 export default function Resources() {
   useMeta({
-    title: "Resources & Learning Paths — AWS SBG HITMS",
+    title: "Resources & Learning Paths | AWS SBG HITMS",
     description:
       "Curated AWS learning paths, labs, certification prep and tools for student builders.",
   });
@@ -24,7 +24,7 @@ export default function Resources() {
       <PageHeader
         eyebrow="Learn · Build · Ship"
         title="Resources For Cloud Builders"
-        subtitle="Curated curricula, hands-on labs and exclusive perks for AWS SBG HITMS members. No prior AWS experience required — just curiosity."
+        subtitle="Curated curricula, hands-on labs and exclusive perks for AWS SBG HITMS members. No prior AWS experience required, just curiosity."
       />
 
       <section className="max-w-7xl mx-auto px-4 md:px-8 pt-16 pb-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -87,7 +87,7 @@ const resources = [
     tag: "BUILDER CENTER",
     title: "Start here | AWS Builder Center",
     url: "https://bit.ly/3OUCW8i",
-    desc: "Access beginner-friendly learning paths, practical hands-on labs, AWS credits, live workshops, and active community events—all with no credit card required.",
+    desc: "Access beginner-friendly learning paths, practical hands-on labs, AWS credits, live workshops, and active community events, all with no credit card required.",
   },
   {
     icon: Wrench,

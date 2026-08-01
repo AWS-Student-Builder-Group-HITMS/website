@@ -93,9 +93,9 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-border/60 py-5 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} AWS Student Builder Group · HITMS Chapter. Built by Waniza
-        Khan.
+      <div className="border-t justify-between flex max-w-7xl p-5 mx-auto border-border/60 py-5 text-center text-xs text-muted-foreground">
+        <span>© {new Date().getFullYear()} AWS Student Builder Group .</span>
+        <span>Built by Waniza Khan.</span>
       </div>
     </footer>
   );
