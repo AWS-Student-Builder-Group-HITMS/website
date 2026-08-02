@@ -254,7 +254,7 @@ const teams: Team[] = [
           "https://www.linkedin.com/in/muhammad-hasan-91809233a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       },
       {
-        name: "Muhammad Shahmeer",
+        name: "Shahmeer Shaikh",
         role: "Events",
         image:
           "https://res.cloudinary.com/txg3hveh/image/upload/v1783966914/Shameer_event_-removebg-preview%201.png",

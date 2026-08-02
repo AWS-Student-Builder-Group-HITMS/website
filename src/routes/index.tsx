@@ -320,8 +320,7 @@ export default function Index() {
               Moments from the <span className="text-gradient-primary">community.</span>
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-foreground/70">
-              Snapshots from workshops, hackathons, and meetups. Drop your photos into the tiles
-              below.
+              Snapshots from workshops, hackathons, and meetups.
             </p>
           </div>
 
