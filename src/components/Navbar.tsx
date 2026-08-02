@@ -30,13 +30,13 @@ export function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 py-2 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-background/80 backdrop-blur-lg border-b border-border/40 shadow-sm"
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-15 flex items-center justify-between relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between relative">
         {/* Brand Logo & Name */}
         <Link to="/" className="flex items-center gap-3 group z-10">
           <div className="relative overflow-hidden rounded-xl p-0.5 border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent group-hover:border-primary/50 transition-colors">
@@ -57,7 +57,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav Links (Centered) */}
-        <nav className="hidden md:flex items-center gap-1 bg-muted/50 p-1.5 rounded-full border border-border/50 backdrop-blur-md shadow-inner absolute left-1/2 -translate-x-1/2">
+        <nav className="hidden md:flex items-center gap-1 bg-muted/50 p-1.5 rounded-full border border-border/50 backdrop-blur-md shadow-inner absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {links.map((l) => {
             const active = location.pathname === l.to;
             return (

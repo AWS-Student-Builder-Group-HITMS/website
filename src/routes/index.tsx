@@ -27,7 +27,7 @@ export default function Index() {
   const HIDE_COMING_NEXT = true;
 
   useMeta({
-    title: "AWS Student Builder Group HITMS — Cloud Builders of Tomorrow",
+    title: "AWS Student Builder Group HITMS | Cloud Builders of Tomorrow",
     description:
       "AWS SBG HITMS is a student-led tech community focused on Cloud, AI & Development to empower future builders.",
   });
@@ -225,7 +225,7 @@ export default function Index() {
               A student-led builder community at HITMS.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-foreground/80">
-              Learners, mentors, and future cloud professionals — building and growing together.
+              Learners, mentors, and future cloud professionals, building and growing together.
             </p>
 
             <div className="mt-6 group relative aspect-video overflow-hidden rounded-2xl border border-border/60">
@@ -368,12 +368,12 @@ export default function Index() {
                   Something's Brewing
                 </p>
                 <h2 className="text-3xl md:text-5xl font-black tracking-tight max-w-3xl mx-auto">
-                  The next workshop, hackathon, or speaker session is being planned —
+                  The next workshop, hackathon, or speaker session is being planned,
                   <span className="text-gradient-primary"> right now.</span>
                 </h2>
                 <p className="mt-4 max-w-xl mx-auto text-base text-foreground/80">
                   We're locking in dates for what's coming next. Join the WhatsApp community to be
-                  the first to know the moment it drops — no spam, just updates that matter.
+                  the first to know the moment it drops, no spam, just updates that matter.
                 </p>
 
                 <div className="mt-8 grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto text-left">
@@ -495,7 +495,7 @@ export default function Index() {
               Ready to <span className="text-gradient-primary">build the cloud?</span>
             </h2>
             <p className="text-foreground/80 max-w-xl mx-auto mb-8">
-              Join our community of student builders across HITMS — becoming architects of tomorrow,
+              Join our community of student builders across HITMS, becoming architects of tomorrow,
               together.
             </p>
             <div className="flex gap-3 justify-center flex-wrap">
@@ -557,7 +557,7 @@ const features = [
   {
     icon: Code2,
     title: "Hands-on Projects",
-    desc: "Build real apps with S3, Lambda, EC2, DynamoDB — guided by mentors.",
+    desc: "Build real apps with S3, Lambda, EC2, DynamoDB, guided by mentors.",
   },
   {
     icon: Cpu,

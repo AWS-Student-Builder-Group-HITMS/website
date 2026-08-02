@@ -12,7 +12,7 @@ const INTRO_LINKEDIN =
 
 export default function Events() {
   useMeta({
-    title: "Events & Workshops — AWS SBG HITMS",
+    title: "Events & Workshops | AWS SBG HITMS",
     description:
       "Hands-on workshops, hackathons, speaker sessions and bootcamps from AWS Student Builder Group HITMS.",
   });
@@ -24,9 +24,9 @@ export default function Events() {
       title: "Introductory Event",
       desc: "An introduction to our vision, roadmap, and opportunities in cloud computing. 6-Feb-2026 (Friday) · 11:00 AM · HITMS Auditorium.",
       overview:
-        "Our very first gathering as AWS Student Builder Group HITMS — held on 6-Feb-2026 (Friday) at 11:00 AM in the HITMS Auditorium. A warm, energetic kickoff where students curious about cloud computing came together to meet the founding team and captain.",
+        "Our very first gathering as AWS Student Builder Group HITMS, held on 6-Feb-2026 (Friday) at 11:00 AM in the HITMS Auditorium. A warm, energetic kickoff where students curious about cloud computing came together to meet the founding team and captain.",
       purpose:
-        "The session was designed to introduce the club's vision and lay out the full roadmap for the year, including upcoming workshops, hackathons, and speaker sessions — while also showing students how to get involved across the five squads: Technical, Media, Marketing, Creative, and Events.",
+        "The session was designed to introduce the club's vision and lay out the full roadmap for the year, including upcoming workshops, hackathons, and speaker sessions, while also showing students how to get involved across the five squads: Technical, Media, Marketing, Creative, and Events.",
       outcome:
         "Attendees left with a clear picture of what the year ahead looks like, direct access to team leads through a live Q&A, and a preview of TechVerse-26. The event closed with sign-ups for the WhatsApp community, setting the tone for everything AWS SBG HITMS has built since.",
       date: "6 Feb 2026 · 11:00 AM",
@@ -57,11 +57,11 @@ export default function Events() {
       id: "techverse",
       tag: "FEATURED EVENT",
       title: "TechVerse-26",
-      desc: "A flagship online session bringing together builders for a live, interactive deep-dive into modern cloud architectures, UI/UX, and cybersecurity — with hands-on challenges and prizes.",
+      desc: "A flagship online session bringing together builders for a live, interactive deep-dive into modern cloud architectures, UI/UX, and cybersecurity with hands-on challenges and prizes.",
       overview:
-        "TechVerse-26 was our flagship online session, held on June 29, 2026, bringing together builders from every discipline for a live, interactive deep-dive into modern cloud architectures. The agenda spanned three focus areas — cloud infrastructure and AWS services, UI/UX design thinking, and cybersecurity fundamentals.",
+        "TechVerse-26 was our flagship online session, held on June 29, 2026, bringing together builders from every discipline for a live, interactive deep-dive into modern cloud architectures. The agenda spanned three focus areas: cloud infrastructure and AWS services, UI/UX design thinking, and cybersecurity fundamentals.",
       purpose:
-        "Each focus area was led by a short expert talk followed by hands-on challenges participants solved in real time, with teams competing on a live leaderboard. The goal was to give students a genuine, practical taste of what building in these fields actually feels like — not just theory.",
+        "Each focus area was led by a short expert talk followed by hands-on challenges participants solved in real time, with teams competing on a live leaderboard. The goal was to give students a genuine, practical taste of what building in these fields actually feels like, not just theory.",
       outcome:
         "Prizes were awarded to the top-performing teams, and the session opened up honest conversations about building a long-term career in the digital age, mentorship, and contributing to real AWS projects through the Student Builder Group. The recording and resources were shared afterward with the full community.",
       date: "June 29, 2026",
@@ -109,70 +109,81 @@ export default function Events() {
         <PageHeader
           eyebrow="Events"
           title="Events That Build Builders"
-          subtitle="Workshops, hackathons and speaker sessions — designed by students, for students."
+          subtitle="Workshops, hackathons and speaker sessions, designed by students, for students."
         />
 
-        <section className="max-w-3xl mx-auto px-4 md:px-8 pb-24 pt-8">
-          <div className="mb-12 text-center md:text-left">
+        <section className="max-w-7xl mx-auto px-4 md:px-8 pb-24">
+          <div className="mb-10 text-center md:text-left">
             <p className="text-[10px] tracking-[0.4em] uppercase text-primary font-bold mb-2 inline-flex items-center gap-2">
               <Sparkles size={12} /> Live Roadmap
             </p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight font-display">
-              Featured & Upcoming Events
+              Featured & Past Events
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-10">
+          {/* Event Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {cards.map((e, i) => (
               <motion.article
                 key={e.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -6 }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                whileHover={{ y: -5 }}
                 data-hover
                 onClick={() => setActive(e)}
-                className="group relative rounded-[2.5rem] border border-border/80 bg-card p-0 cursor-pointer shadow-2xl overflow-hidden backdrop-blur-md transition-all duration-300 hover:border-primary/55"
+                className="group relative rounded-2xl border border-primary/25 hover:border-primary/70 bg-gradient-to-br from-card via-card/95 to-background p-0 cursor-pointer shadow-xl hover:shadow-[0_20px_50px_-12px_oklch(0.769_0.165_64.5/0.3)] overflow-hidden backdrop-blur-md transition-all duration-300 flex flex-col justify-between"
               >
-                <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all duration-500 pointer-events-none" />
+                <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-primary/15 blur-3xl group-hover:bg-primary/30 transition-all duration-500 pointer-events-none" />
 
-                <div className="flex flex-col">
-                  {/* Banner Image Container */}
-                  <div className="relative w-full overflow-hidden bg-muted/20 border-b border-border/40 flex items-center justify-center">
+                <div className="flex flex-col sm:flex-row h-full">
+                  {/* Left Banner Image Container — auto-adjusts width to image aspect ratio */}
+                  <div className="relative w-full sm:w-auto sm:max-w-[45%] shrink-0 overflow-hidden border-b sm:border-b-0 sm:border-r border-border/50 flex items-center justify-center">
+                    {/* Status Badge Overlaid on Banner */}
+                    <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-widest bg-background/90 text-primary border border-primary/40 backdrop-blur-md shadow-lg">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Completed
+                    </div>
                     <img
                       src={e.banner}
                       alt={e.title}
-                      className="w-full h-auto object-contain transition duration-700 group-hover:scale-[1.01]"
+                      className="w-full h-auto sm:h-full sm:w-auto max-h-[320px] object-cover sm:object-contain transform group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
 
-                  {/* Content Container with Highlighted Description Box */}
-                  <div className="flex flex-col justify-between p-6 md:p-8 bg-card relative">
+                  {/* Right Info Container */}
+                  <div className="flex flex-col justify-between p-5 sm:p-6 bg-card/60 relative flex-1">
                     <div>
-                      <h3 className="text-2xl md:text-4xl font-black tracking-tight font-display mb-3 group-hover:text-primary transition-colors duration-300">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="px-2.5 py-0.5 rounded-md text-[9px] tracking-[0.2em] uppercase font-black text-primary bg-primary/10 border border-primary/30 inline-flex items-center gap-1">
+                          <Sparkles size={10} /> {e.tag}
+                        </span>
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-black tracking-tight font-display mb-2 group-hover:text-primary transition-colors duration-300">
                         {e.title}
                       </h3>
-                      <div className="w-12 h-1 bg-primary rounded-full mb-4 shadow-sm" />
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed bg-muted/30 p-4 rounded-xl border border-border/40">
+                      <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full mb-3 shadow-sm" />
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed bg-muted/40 p-3.5 rounded-xl border border-border/50">
                         {e.desc}
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap items-center justify-between gap-4 mt-8 pt-6 border-t border-border/60">
-                      <div className="flex flex-wrap gap-4 text-xs font-semibold text-muted-foreground">
-                        <span className="inline-flex items-center gap-1.5 bg-muted/50 px-3 py-1.5 rounded-lg border border-border/50">
-                          <Calendar size={14} className="text-primary" /> {e.date}
+                    <div className="flex flex-wrap items-center justify-between gap-3 mt-5 pt-4 border-t border-border/60">
+                      <div className="flex flex-wrap gap-2 text-[11px] font-semibold text-muted-foreground">
+                        <span className="inline-flex items-center gap-1.5 bg-muted/60 px-2.5 py-1 rounded-lg border border-border/50">
+                          <Calendar size={12} className="text-primary" /> {e.date}
                         </span>
-                        <span className="inline-flex items-center gap-1.5 bg-muted/50 px-3 py-1.5 rounded-lg border border-border/50">
-                          <MapPin size={14} className="text-primary" /> {e.type}
+                        <span className="inline-flex items-center gap-1.5 bg-muted/60 px-2.5 py-1 rounded-lg border border-border/50">
+                          <MapPin size={12} className="text-primary" /> {e.type}
                         </span>
                       </div>
 
-                      <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary group-hover:translate-x-1 transition-transform">
+                      <div className="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider text-primary group-hover:translate-x-1 transition-transform ml-auto">
                         <span>Explore Story</span>
-                        <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground grid place-items-center shadow-md">
-                          <ArrowRight size={16} />
+                        <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground grid place-items-center shadow-md">
+                          <ArrowRight size={14} />
                         </div>
                       </div>
                     </div>
@@ -181,6 +192,68 @@ export default function Events() {
               </motion.article>
             ))}
           </div>
+
+          {/* MORE EVENTS COMING SOON CTA BANNER */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-12 sm:mt-16 relative overflow-hidden rounded-3xl border border-primary/40 bg-gradient-to-br from-card via-card/90 to-background p-8 md:p-12 shadow-2xl"
+          >
+            <div className="absolute -top-32 -left-20 h-80 w-80 rounded-full bg-primary/20 blur-3xl animate-pulse" />
+            <div className="absolute -bottom-32 -right-20 h-96 w-96 rounded-full bg-[oklch(0.72_0.13_220/0.25)] blur-3xl" />
+            <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
+
+            <div className="relative grid md:grid-cols-[1fr_auto] gap-8 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/40 bg-primary/10 text-[10px] tracking-widest uppercase font-black text-primary mb-4">
+                  <span className="h-2 w-2 rounded-full bg-primary animate-ping" />
+                  Upcoming Roadmap · 2026
+                </div>
+
+                <h3 className="text-2xl md:text-4xl font-black tracking-tight font-display mb-3">
+                  More Events & Bootcamps <span className="text-gradient-primary">Coming Soon</span>
+                </h3>
+
+                <p className="text-sm md:text-base text-muted-foreground max-w-2xl leading-relaxed mb-6">
+                  We are cooking up hands-on AWS cloud workshops, AI hackathons, certification cohorts, and live speaker sessions for the HITMS community. Stay connected so you never miss a launch!
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["Cloud Bootcamps", "AI & LLM Labs", "AWS Certifications", "Hackathons"].map((pill) => (
+                    <span
+                      key={pill}
+                      className="px-3 py-1 rounded-lg border border-border bg-background/60 text-[11px] font-medium text-foreground/80"
+                    >
+                      {pill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+                <a
+                  href="https://www.meetup.com/aws-sbg-at-hitms/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-hover
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-primary-foreground font-black text-xs uppercase tracking-widest shadow-lg hover:shadow-[0_0_30px_oklch(0.769_0.165_64.5/0.5)] hover:scale-[1.02] transition-all duration-200"
+                >
+                  <Sparkles size={14} />
+                  Join Meetup Community
+                </a>
+                <a
+                  href="/contact"
+                  data-hover
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-primary/40 bg-primary/10 text-primary font-black text-xs uppercase tracking-widest hover:bg-primary/20 transition-all duration-200"
+                >
+                  Get Notified
+                  <ArrowRight size={14} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </section>
       </Layout>
 
