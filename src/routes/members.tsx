@@ -103,10 +103,10 @@ const teams: Team[] = [
         role: "Technical",
         image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966881/Ahmed%20Hussain.png",
         roll: "24BSCS219",
-        bio: "An expert in Red Hat security and Full Stack development with four years of experience. Specializes in building secure, scalable digital solutions. Passionate about tackling complex technical challenges and cybersecurity trends.",
+        bio: "An expert in Red Hat Hacking and Full Stack development with four years of experience in building secure, scalable digital solutions. Specializes in offensive security research and red team tool development.",
         github: "https://github.com/ahmedhussain176",
-        linkedin: "https://www.google.com/search?q=ahmedhussain006",
-        portfolio: "https://www.google.com/search?q=ahmed-hussain-dev.vercel.app",
+        linkedin: "https://www.linkedin.com/in/ahmedhussain006",
+        portfolio: "https://ahmed-hussain-dev.vercel.app",
       },
       {
         name: "Ahmed Mujtaba",
