@@ -112,9 +112,9 @@ export default function Contact() {
               <p className="text-sm text-muted-foreground mt-2">
                 All AWS Student Builder Group HITMS workshops, meetups, and sessions are hosted and
                 registered through our official{" "}
-                <span className="text-foreground font-semibold">Meetup</span> page, it's the
-                fastest way to reserve your spot, see upcoming events, and get reminders before we
-                go live. Join our Meetup group to stay in the loop and never miss a session.
+                <span className="text-foreground font-semibold">Meetup</span> page, it's the fastest
+                way to reserve your spot, see upcoming events, and get reminders before we go live.
+                Join our Meetup group to stay in the loop and never miss a session.
               </p>
             </div>
           </div>

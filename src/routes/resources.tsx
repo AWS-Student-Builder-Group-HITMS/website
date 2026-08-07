@@ -9,6 +9,8 @@ import {
   Cloud,
   ShieldAlert,
   ExternalLink,
+  QrCode,
+  ArrowUpRight,
 } from "lucide-react";
 import { useMeta } from "@/hooks/useMeta";
 
@@ -27,7 +29,89 @@ export default function Resources() {
         subtitle="Curated curricula, hands-on labs and exclusive perks for AWS SBG HITMS members. No prior AWS experience required, just curiosity."
       />
 
-      <section className="max-w-7xl mx-auto px-4 md:px-8 pt-16 pb-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {/* Featured hero card — AWS Builder Center */}
+      <section className="max-w-7xl mx-auto px-4 md:px-8 pt-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative rounded-2xl overflow-hidden border-2 border-amber-400/60 bg-card shadow-xl shadow-amber-400/20 ring-4 ring-amber-300/10"
+        >
+          {/* yellow ambient glow surround */}
+          <motion.div
+            className="absolute -top-28 -right-20 h-80 w-80 rounded-full bg-amber-400/30 blur-3xl"
+            animate={{ opacity: [0.4, 0.85, 0.4] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute -bottom-24 -left-20 h-72 w-72 rounded-full bg-yellow-300/25 blur-3xl"
+            animate={{ opacity: [0.6, 0.3, 0.6] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-amber-300/10 blur-3xl"
+            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          />
+          {/* glowing border ring */}
+          <motion.div
+            className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-amber-400"
+            animate={{ opacity: [0.3, 0.9, 0.3] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          <div className="relative grid lg:grid-cols-[1.6fr_auto] gap-10 items-center p-8 md:p-12 lg:p-14">
+            {/* Left: content */}
+            <div>
+              <div className="h-16 w-16 rounded-2xl bg-primary/10 border border-primary/30 flex items-center justify-center text-primary shadow-sm mb-6">
+                <Code2 size={30} strokeWidth={2} />
+              </div>
+
+              <span className="text-[11px] tracking-[0.3em] uppercase font-bold text-primary">
+                Builder Center
+              </span>
+
+              <h2 className="text-3xl md:text-4xl font-extrabold mt-2 leading-tight">
+                Start here | AWS Builder Center
+              </h2>
+
+              <p className="text-muted-foreground mt-4 leading-relaxed max-w-xl text-[15px]">
+                Access beginner-friendly learning paths, practical hands-on labs, AWS credits, live
+                workshops, and active community events, all with no credit card required.
+              </p>
+
+              <a
+                href="https://bit.ly/4vYJOkE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground font-semibold text-sm py-3 px-6 hover:opacity-90 hover:gap-3 transition-all shadow-md"
+              >
+                Explore Builder Center
+                <ArrowUpRight size={16} strokeWidth={2.5} />
+              </a>
+            </div>
+
+            {/* Right: QR code panel */}
+            <div className="flex flex-col items-center justify-self-center">
+              <div className="relative bg-white rounded-2xl p-4 shadow-xl border border-border">
+                <img
+                  src="https://res.cloudinary.com/txg3hveh/image/upload/v1786036257/WhatsApp_Image_2026-08-05_at_11.17.45_PM_c44cce.jpg"
+                  alt="Scan to open AWS Builder Center"
+                  className="h-40 w-40 md:h-44 md:w-44 rounded-lg object-cover"
+                />
+              </div>
+              <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase font-bold text-primary">
+                <QrCode size={13} strokeWidth={2.4} />
+                Scan to open
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Remaining resources grid */}
+      <section className="max-w-7xl mx-auto px-4 md:px-8 pt-10 pb-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {resources.map((r, i) => (
           <motion.div
             key={r.title}
@@ -81,13 +165,6 @@ const resources = [
     title: "AWS Skill Builder",
     url: "https://skillbuilder.aws",
     desc: "Unlock over 600+ free online courses, interactive hands-on labs, structured certification exam prep, and verifiable digital badges with zero prior experience required.",
-  },
-  {
-    icon: Code2,
-    tag: "BUILDER CENTER",
-    title: "Start here | AWS Builder Center",
-    url: "https://bit.ly/3OUCW8i",
-    desc: "Access beginner-friendly learning paths, practical hands-on labs, AWS credits, live workshops, and active community events, all with no credit card required.",
   },
   {
     icon: Wrench,

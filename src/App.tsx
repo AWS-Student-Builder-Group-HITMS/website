@@ -8,6 +8,7 @@ import {
   AboutPageLoader,
   ContactPageLoader,
 } from "./components/PageLoadersThemed";
+import Gallery from "./routes/gallery";
 
 // Lazy load routes for better CSR performance
 const Home = lazy(() => import("./routes/index"));
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/members" element={<Members />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           {/* Fallback route for SPA routing */}
           <Route path="*" element={<Home />} />

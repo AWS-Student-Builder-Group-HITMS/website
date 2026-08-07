@@ -63,7 +63,7 @@ const captain: Member = {
   name: "Hanzala Salaheen",
   role: "Student Builder Group Captain",
   image: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966878/231%201.png",
-  roll: "24BSSW041",
+  roll: "24BSSW043",
   bio: `A Full Stack AI Engineer specializing in RAG and intelligent automation. Experienced in architecting robust backend systems, scalable AI solutions, and AWS pipelines. Committed to building autonomous agents and driving technical growth to create seamless intelligent applications.`,
   github: "https://github.com/hanzi448",
   linkedin: "https://www.linkedin.com/in/hanzala-salaheen",
@@ -364,14 +364,23 @@ export default function Members() {
           <div className="flex w-max animate-marquee-rev text-xl font-bold uppercase tracking-widest">
             <div className="flex shrink-0 items-center gap-8 sm:gap-12 pr-8 sm:pr-12">
               {allNames.map((n, i) => (
-                <span key={i} className="inline-flex items-center gap-8 sm:gap-12 text-muted-foreground/70">
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-8 sm:gap-12 text-muted-foreground/70"
+                >
                   {n} <Star size={14} className="text-primary shrink-0" />
                 </span>
               ))}
             </div>
-            <div className="flex shrink-0 items-center gap-8 sm:gap-12 pr-8 sm:pr-12" aria-hidden="true">
+            <div
+              className="flex shrink-0 items-center gap-8 sm:gap-12 pr-8 sm:pr-12"
+              aria-hidden="true"
+            >
               {allNames.map((n, i) => (
-                <span key={`dup-${i}`} className="inline-flex items-center gap-8 sm:gap-12 text-muted-foreground/70">
+                <span
+                  key={`dup-${i}`}
+                  className="inline-flex items-center gap-8 sm:gap-12 text-muted-foreground/70"
+                >
                   {n} <Star size={14} className="text-primary shrink-0" />
                 </span>
               ))}

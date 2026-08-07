@@ -22,6 +22,7 @@ import { Link } from "react-router-dom";
 import { useMeta } from "@/hooks/useMeta";
 
 const MEETUP_URL = "https://www.meetup.com/aws-sbg-at-hitms/";
+const WHY_JOIN_LINK = "https://bit.ly/4vYJOkE";
 
 export default function Index() {
   const HIDE_COMING_NEXT = true;
@@ -281,7 +282,7 @@ export default function Index() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: i * 0.08, duration: 0.45, ease: "easeOut" }}
                 data-hover
-                className="group relative p-7 rounded-2xl bg-card/80 border border-border hover:border-primary/60 overflow-hidden transition-colors hover:-translate-y-1 hover:scale-[1.01]"
+                className="group relative p-7 rounded-2xl bg-card/80 border border-border hover:border-primary/60 overflow-hidden transition-colors hover:-translate-y-1 hover:scale-[1.01] flex flex-col justify-between"
               >
                 <div
                   className="absolute inset-0 opacity-30 group-hover:opacity-100 transition duration-500"
@@ -296,11 +297,20 @@ export default function Index() {
                   </div>
                   <h3 className="text-xl font-black mb-2 tracking-tight">{f.title}</h3>
                   <p className="text-sm text-foreground/80 leading-relaxed">{f.desc}</p>
-                  <div className="mt-5 flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-primary opacity-0 group-hover:opacity-100 transition">
-                    <span>Explore</span>
-                    <ArrowRight size={12} className="group-hover:translate-x-1 transition" />
-                  </div>
                 </div>
+
+                <div className="relative mt-6 pt-4 border-t border-border/40">
+                  <a
+                    href={WHY_JOIN_LINK}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-primary font-bold group-hover:text-accent transition-colors"
+                  >
+                    <span>Explore</span>
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition" />
+                  </a>
+                </div>
+
                 <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-primary-glow to-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
               </motion.div>
             ))}
@@ -312,35 +322,54 @@ export default function Index() {
       <section className="relative py-24 px-4 md:px-8 overflow-hidden">
         <FlyingIcons density={0.4} />
         <div className="relative max-w-7xl mx-auto">
-          <div className="mb-12">
-            <p className="text-xs tracking-[0.3em] uppercase text-primary font-bold mb-2">
-              Gallery
-            </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight">
-              Moments from the <span className="text-gradient-primary">community.</span>
-            </h2>
-            <p className="mt-3 max-w-2xl text-sm text-foreground/70">
-              Snapshots from workshops, hackathons, and meetups.
-            </p>
+          <div className="mb-12 flex items-end justify-between flex-wrap gap-4">
+            <div>
+              <p className="text-xs tracking-[0.3em] uppercase text-primary font-bold mb-2">
+                Gallery
+              </p>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight">
+                Moments from the <span className="text-gradient-primary">community.</span>
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm text-foreground/70">
+                Snapshots from workshops, hackathons, and meetups.
+              </p>
+            </div>
+
+            <Link
+              to="/gallery"
+              data-hover
+              className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition-all hover:-translate-y-0.5 text-sm md:text-base overflow-hidden"
+            >
+              <span className="relative z-10">Explore Our Gallery</span>
+              <ArrowRight
+                size={16}
+                className="relative z-10 group-hover:translate-x-1 transition"
+              />
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 bg-gradient-to-r from-primary-glow to-primary" />
+            </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[170px] gap-5">
-            {galleryItems.map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.06, duration: 0.4 }}
-                data-hover
-                className={`group relative overflow-hidden border border-border/70 bg-card/70 transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:shadow-[0_10px_40px_rgba(0,0,0,0.25)] ${item.shape} ${item.span}`}
-              >
-                <div className="absolute inset-0 scale-105 group-hover:scale-[1.15] transition-transform duration-700">
+          {/* Fanned card spread - Cleaned up: removed hover text overlay completely */}
+          <div className="relative flex justify-center items-end flex-wrap min-h-[340px] md:min-h-[500px] mt-12 pb-6">
+            {galleryItems.map((item, i) => {
+              const mid = (galleryItems.length - 1) / 2;
+              const offset = i - mid;
+              return (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 50, rotate: offset * 7 }}
+                  whileInView={{ opacity: 1, y: 0, rotate: offset * 7 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
+                  whileHover={{ y: -30, rotate: 0, scale: 1.08, zIndex: 30 }}
+                  data-hover
+                  className="group relative w-40 sm:w-48 md:w-64 aspect-[3/4] -mx-4 sm:-mx-6 rounded-2xl border border-border/70 bg-card/80 shadow-[0_15px_50px_rgba(0,0,0,0.45)] overflow-hidden origin-bottom transition-shadow hover:border-primary/60 hover:shadow-[0_25px_70px_rgba(0,0,0,0.6)]"
+                  style={{ zIndex: 10 + (galleryItems.length - Math.abs(offset)) }}
+                >
                   <ImageSlot src={item.src} label={item.label} icon={item.icon} />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent opacity-40 transition duration-500" />
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -653,49 +682,35 @@ const galleryItems: {
   label: string;
   icon: typeof ImageIcon;
   src?: string;
-  shape: string;
-  span: string;
 }[] = [
   {
     label: "Add photo: Hackathon night",
     icon: Rocket,
     src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966921/WhatsApp%20Image%202026-07-13%20at%207.31.27%20PM.jpg",
-    shape: "rounded-[2rem]",
-    span: "col-span-2 row-span-2",
   },
   {
     label: "Add photo: Workshop",
     icon: Cloud,
     src: "https://res.cloudinary.com/txg3hveh/image/upload/v1785261744/meeting_mkrtxv.jpg",
-    shape: "rounded-full",
-    span: "col-span-1 row-span-1",
   },
   {
     label: "Add photo: Team huddle",
     icon: Users,
     src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966885/audience.jpg",
-    shape: "rounded-2xl",
-    span: "col-span-1 row-span-1",
   },
   {
     label: "Add photo: Certification win",
     icon: Award,
-    shape: "rounded-3xl",
     src: "https://res.cloudinary.com/txg3hveh/image/upload/v1785262423/member_q1wkcj.jpg",
-    span: "col-span-1 row-span-2",
   },
   {
     label: "Add photo: Speaker session",
     icon: Sparkles,
     src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966919/WhatsApp%20Image%202026-07-13%20at%207.31.27%20PM%20%282%29.jpg",
-    shape: "rounded-full",
-    span: "col-span-1 row-span-1",
   },
   {
     label: "Add photo: Builder demo",
     icon: Code2,
-    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1783966888/brand-asset-logo-76cfb827-20260713T200857.png",
-    shape: "rounded-2xl",
-    span: "col-span-2 row-span-1",
+    src: "https://res.cloudinary.com/txg3hveh/image/upload/v1786120306/captain_speech.jpg",
   },
 ];
