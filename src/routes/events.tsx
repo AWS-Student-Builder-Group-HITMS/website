@@ -3,12 +3,23 @@ import { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
 import { useMeta } from "@/hooks/useMeta";
-import { Calendar, MapPin, ArrowRight, Instagram, Linkedin, Sparkles, X } from "lucide-react";
+import {
+  Calendar,
+  MapPin,
+  ArrowRight,
+  Instagram,
+  Linkedin,
+  Sparkles,
+  X,
+  MessageCircle,
+} from "lucide-react";
 
 const INTRO_INSTAGRAM =
   "https://www.instagram.com/reel/DUf-IfwAdA2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==";
 const INTRO_LINKEDIN =
   "https://www.linkedin.com/posts/aws-student-builder-group-hitms_awsdevelopers-awscloudclubs-hitms-activity-7425653263510724609-qI3x";
+const WHATSAPP_URL = "https://chat.whatsapp.com/FgyyG0kLNIKIovBwenLagq";
+const MEETUP_URL = "https://www.meetup.com/aws-sbg-at-hitms/";
 
 export default function Events() {
   useMeta({
@@ -180,6 +191,63 @@ export default function Events() {
                 </div>
               </motion.article>
             ))}
+
+            {/* UPCOMING EVENT CARD — no image, community CTA */}
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: cards.length * 0.1 }}
+              className="group relative rounded-[2.5rem] border border-primary/40 bg-card p-0 overflow-hidden shadow-2xl backdrop-blur-md"
+            >
+              <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/15 blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[oklch(0.35_0.15_150/0.3)] blur-3xl pointer-events-none" />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+
+              <div className="relative flex flex-col items-center text-center p-8 md:p-14">
+                <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase font-black text-primary mb-4">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                  Upcoming Event
+                </span>
+
+                <h3 className="text-2xl md:text-4xl font-black tracking-tight font-display mb-4">
+                  Something's <span className="text-gradient-primary">Brewing</span>
+                </h3>
+
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl bg-muted/30 p-4 rounded-xl border border-border/40">
+                  We're locking in dates for the next workshop, hackathon, or speaker session. Join
+                  our community to be the first to know the moment it drops — no spam, just updates
+                  that matter.
+                </p>
+
+                <div className="w-12 h-1 bg-primary rounded-full my-6" />
+
+                <p className="text-xs font-bold uppercase tracking-widest text-foreground/70 mb-4">
+                  Join Our Community
+                </p>
+
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-hover
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition"
+                  >
+                    <MessageCircle size={16} /> Join WhatsApp
+                  </a>
+                  <a
+                    href={MEETUP_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-hover
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition"
+                  >
+                    <Calendar size={16} /> Join Meetup
+                  </a>
+                </div>
+              </div>
+            </motion.article>
           </div>
         </section>
       </Layout>

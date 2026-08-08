@@ -338,7 +338,7 @@ export default function Index() {
             <Link
               to="/gallery"
               data-hover
-              className="group shrink-0 inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/40 text-primary text-[11px] font-black uppercase tracking-widest hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_25px_oklch(0.769_0.165_64.5/0.5)] transition-all duration-300"
+              className="group hidden shrink-0 sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/40 text-primary text-[11px] font-black uppercase tracking-widest hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_25px_oklch(0.769_0.165_64.5/0.5)] transition-all duration-300"
             >
               <span>View Gallery</span>
               <ArrowRight size={12} className="group-hover:translate-x-1 transition" />
@@ -423,18 +423,18 @@ export default function Index() {
                   ))}
                 </div>
 
-                <div className="mt-9 flex flex-wrap gap-3 justify-center">
+                <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
                   <a
                     href="https://chat.whatsapp.com/FgyyG0kLNIKIovBwenLagq"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition"
+                    className="inline-flex w-full items-center justify-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition sm:w-auto"
                   >
                     <Zap size={16} /> Get Notified First
                   </a>
                   <Link
                     to="/events"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition"
+                    className="inline-flex w-full items-center justify-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition sm:w-auto"
                   >
                     See Past Events <ArrowRight size={14} />
                   </Link>
@@ -531,12 +531,12 @@ export default function Index() {
               Join our community of student builders across HITMS, becoming architects of tomorrow,
               together.
             </p>
-            <div className="flex gap-3 justify-center flex-wrap">
+            <div className="flex flex-col gap-3 justify-center sm:flex-row sm:flex-wrap">
               <a
                 href="https://chat.whatsapp.com/FgyyG0kLNIKIovBwenLagq"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition"
+                className="inline-flex w-full items-center justify-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-bold hover:shadow-[0_0_40px_oklch(0.769_0.165_64.5/0.7)] transition sm:w-auto"
               >
                 <Zap size={16} /> Join WhatsApp
               </a>
@@ -544,7 +544,7 @@ export default function Index() {
                 href={MEETUP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition"
+                className="inline-flex w-full items-center justify-center gap-2 px-6 py-3 rounded-md border border-primary/60 text-primary hover:bg-primary/10 transition sm:w-auto"
               >
                 <Users size={16} /> Join Meetup
               </a>
