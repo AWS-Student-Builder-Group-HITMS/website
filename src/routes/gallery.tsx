@@ -7,31 +7,46 @@ import { Expand, ImagePlus, Sparkles, X } from "lucide-react";
 
 interface GalleryImage {
   id: number;
-  src: string; // paste your Cloudinary image URL here — leave "" to keep the empty slot
+  src: string; // Cloudinary image URL — leave "" to keep the empty slot
   alt: string;
-  span: string;
 }
 
-// Repeating bento pattern for a premium, non-uniform grid
-const spanPattern = [
-  "md:col-span-2 md:row-span-2",
-  "md:col-span-1 md:row-span-1",
-  "md:col-span-1 md:row-span-1",
-  "md:col-span-1 md:row-span-2",
-  "md:col-span-1 md:row-span-1",
-  "md:col-span-2 md:row-span-1",
-  "md:col-span-1 md:row-span-1",
-  "md:col-span-1 md:row-span-1",
-  "md:col-span-1 md:row-span-2",
-  "md:col-span-1 md:row-span-1",
+// URLs pasted exactly in the order given — sequence preserved, not grouped/mixed by event.
+const rawUrls: string[] = [
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230225/communityday2_vmyp8m.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230225/introductory1_ie2zmy.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230224/communityday4_z54jsq.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786231659/speakers_kkdklh.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230224/interview_d8pma8.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230225/introdcutory2_njspnc.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230224/techverse1_pqo13m.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230224/techverse6_zqkkye.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230223/leader_d2lc7y.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230224/techverse3_mghmic.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230224/communityday5_o3yiuy.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230224/techverse2_yjk99m.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230223/swags_atmn6n.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230223/swags_distribution_b9ajfo.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230223/techverse4_pcaeg1.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230223/swag_distribution2_gzhaer.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786230223/communityday1_duluol.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1785261744/meeting_mkrtxv.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1785262423/member_q1wkcj.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1783966921/WhatsApp%20Image%202026-07-13%20at%207.31.27%20PM.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1783966919/WhatsApp%20Image%202026-07-13%20at%207.31.27%20PM%20%282%29.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786119989/WhatsApp%20Image%202026-07-13%20at%207.31.27%20PM%20%281%29.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1783966915/team.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1783966912/prize.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1783966911/overview.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786120306/captain_speech.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1783966885/audience.jpg",
+  "https://res.cloudinary.com/txg3hveh/image/upload/v1786232699/swags2_liw5j4.jpg",
 ];
 
-// TOTAL: 30 slots, all empty for now — paste real Cloudinary URLs into `src` as they come.
-const galleryImages: GalleryImage[] = Array.from({ length: 30 }, (_, i) => ({
+const galleryImages: GalleryImage[] = Array.from({ length: 28 }, (_, i) => ({
   id: i + 1,
-  src: "",
+  src: rawUrls[i] ?? "",
   alt: `AWS SBG HITMS gallery photo ${i + 1}`,
-  span: spanPattern[i % spanPattern.length],
 }));
 
 export default function Gallery() {
@@ -51,7 +66,7 @@ export default function Gallery() {
         subtitle="A visual trail of every session, workshop and win — captured live by the Student Builder Group."
       />
 
-      {/* Orbit divider — signature element */}
+      {/* Orbit divider — signature element
       <div className="max-w-6xl mx-auto px-4 md:px-8 -mt-2 mb-12">
         <div className="relative flex items-center justify-center gap-3">
           <span className="h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_12px_oklch(0.769_0.165_64.5/0.8)]" />
@@ -60,14 +75,14 @@ export default function Gallery() {
           <span className="flex-1 max-w-xs border-t border-dashed border-[oklch(0.78_0.17_140/0.5)]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[oklch(0.78_0.17_140)] shadow-[0_0_12px_oklch(0.78_0.17_140/0.7)]" />
         </div>
-      </div>
+      </div> */}
 
-      {/* Bento Grid */}
+      {/* Uniform Gallery Grid — every card is the exact same size & shape */}
       <section className="relative max-w-6xl mx-auto px-4 md:px-8 pb-24">
         <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[oklch(0.769_0.165_64.5/0.15)] blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -right-20 h-72 w-72 rounded-full bg-[oklch(0.78_0.17_140/0.15)] blur-3xl pointer-events-none" />
 
-        <div className="relative grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[170px] gap-4 grid-flow-dense">
+        <div className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
           {galleryImages.map((img, i) => {
             const hasImage = img.src.trim().length > 0;
             return (
@@ -81,25 +96,26 @@ export default function Gallery() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (i % 10) * 0.04 }}
-                className={`group relative overflow-hidden rounded-2xl border bg-card text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors duration-300 ${
-                  img.span
-                } ${
+                transition={{ duration: 0.5, delay: (i % 12) * 0.04 }}
+                className={`group relative aspect-square overflow-hidden rounded-2xl border bg-card text-left shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-all duration-300 ${
                   hasImage
-                    ? "border-border/60 hover:border-primary/60 cursor-pointer"
+                    ? "border-border/60 hover:border-primary/60 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 cursor-pointer"
                     : "border-dashed border-border/40 hover:border-primary/40 cursor-default"
                 }`}
               >
                 {hasImage ? (
                   <>
+                    {/* Photo fills the card edge-to-edge — same shape everywhere, no side gaps */}
                     <img
                       src={img.src}
                       alt={img.alt}
                       loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover scale-100 group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className="absolute inset-0 h-full w-full object-cover object-center scale-100 group-hover:scale-110 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/0 group-hover:via-primary transition-all duration-500" />
+                    <div className="absolute inset-0 ring-1 ring-inset ring-white/0 group-hover:ring-white/10 transition-all duration-300 rounded-2xl" />
                     <div className="absolute top-3 right-3 h-8 w-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 grid place-items-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300">
                       <Expand size={14} className="text-white" />
                     </div>
@@ -140,7 +156,7 @@ export default function Gallery() {
               <img
                 src={selected.src}
                 alt={selected.alt}
-                className="w-full max-h-[80vh] object-cover"
+                className="w-full h-[80vh] object-cover object-center"
               />
               <button
                 onClick={() => setSelected(null)}
