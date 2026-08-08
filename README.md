@@ -4,7 +4,7 @@ A modern, animated website for the AWS Student Builder Group at HITMS, built wit
 **React 19 + TanStack Start + Tailwind CSS v4 + Framer Motion**.
 
 The theme is a soft, light slate-navy paired with a warm AWS amber, aligned with
-the club logo.
+the SBG logo.
 
 ---
 
