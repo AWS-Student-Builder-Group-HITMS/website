@@ -336,8 +336,8 @@ export default function Index() {
               Badges We've <span className="text-gradient-primary">Earned.</span>
             </h2>
             <p className="mt-3 max-w-2xl mx-auto text-sm text-foreground/70">
-              Official AWS recognitions earned by our leadership, proof of an active and
-              growing student builder community.
+              Official AWS recognitions earned by our leadership, proof of an active and growing
+              student builder community.
             </p>
           </motion.div>
 
@@ -619,13 +619,7 @@ function ImageSlot({
  * Mouse-follow perspective tilt + Z-depth layering + cursor spotlight glow.
  * Same file, no extra imports beyond framer-motion hooks (already imported above).
  */
-function TiltBadge({
-  badge,
-  index,
-}: {
-  badge: (typeof badges)[number];
-  index: number;
-}) {
+function TiltBadge({ badge, index }: { badge: (typeof badges)[number]; index: number }) {
   const ref = React.useRef<HTMLDivElement>(null);
 
   const mouseX = useMotionValue(0);
@@ -873,8 +867,7 @@ const badges: {
     title: "AWS SBG Spark Badge",
     desc: "Earned by our leadership for hosting our very first community event.",
     issued: "Aug 06, 2026",
-    image:
-      "https://res.cloudinary.com/txg3hveh/image/upload/v1787239556/spark_badge_jdhdr9.png",
+    image: "https://res.cloudinary.com/txg3hveh/image/upload/v1787239556/spark_badge_jdhdr9.png",
     link: "https://www.credly.com/badges/ea3ead71-7b33-45b4-8cc8-137a30a2685c",
   },
   {
@@ -882,8 +875,7 @@ const badges: {
     title: "AWS SBG Ignite Badge",
     desc: "Earned by our leadership for hosting our second community event.",
     issued: "Aug 13, 2026",
-    image:
-      "https://res.cloudinary.com/txg3hveh/image/upload/v1787239556/ignite_bdge_zu5caz.png",
+    image: "https://res.cloudinary.com/txg3hveh/image/upload/v1787239556/ignite_bdge_zu5caz.png",
     link: "https://www.credly.com/badges/e242ed74-8ad1-49f5-b631-64816a74c002",
   },
   // Next badge? Just add a new object here — layout auto-adjusts.
