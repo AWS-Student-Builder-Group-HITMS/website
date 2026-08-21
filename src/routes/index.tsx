@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import * as React from "react";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Layout } from "@/components/Layout";
 import { Hero3D } from "@/components/Hero3D";
 import { FlyingIcons } from "@/components/FlyingIcons";
@@ -18,6 +19,7 @@ import {
   Boxes,
   Image as ImageIcon,
   Images,
+  ExternalLink,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useMeta } from "@/hooks/useMeta";
@@ -317,6 +319,42 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ACHIEVEMENTS / BADGES — now with premium 3D tilt cards */}
+      <section className="relative py-24 px-4 md:px-8 overflow-hidden">
+        <FlyingIcons density={0.45} />
+        <div className="relative max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-14 text-center"
+          >
+            <p className="text-xs tracking-[0.3em] uppercase text-primary font-bold mb-2">
+              Achievements
+            </p>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight">
+              Badges We've <span className="text-gradient-primary">Earned.</span>
+            </h2>
+            <p className="mt-3 max-w-2xl mx-auto text-sm text-foreground/70">
+              Official AWS recognitions earned by our leadership, proof of an active and
+              growing student builder community.
+            </p>
+          </motion.div>
+
+          {/* Badge grid — currently centered for 2 cards.
+              Once more badges are added, remove `max-w-3xl mx-auto` and re-add
+              `lg:grid-cols-3 xl:grid-cols-4` so the grid auto-expands. */}
+          <div
+            className="grid gap-8 sm:grid-cols-2 max-w-3xl mx-auto"
+            style={{ perspective: 1500 }}
+          >
+            {badges.map((b, i) => (
+              <TiltBadge key={b.title} badge={b} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* GALLERY */}
       <section className="relative py-24 px-4 md:px-8 overflow-hidden">
         <FlyingIcons density={0.4} />
@@ -576,6 +614,144 @@ function ImageSlot({
   );
 }
 
+/**
+ * TiltBadge — premium 3D tilt card for the Achievements section.
+ * Mouse-follow perspective tilt + Z-depth layering + cursor spotlight glow.
+ * Same file, no extra imports beyond framer-motion hooks (already imported above).
+ */
+function TiltBadge({
+  badge,
+  index,
+}: {
+  badge: (typeof badges)[number];
+  index: number;
+}) {
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [12, -12]), {
+    stiffness: 200,
+    damping: 20,
+  });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-12, 12]), {
+    stiffness: 200,
+    damping: 20,
+  });
+
+  const glowX = useTransform(mouseX, [-0.5, 0.5], ["0%", "100%"]);
+  const glowY = useTransform(mouseY, [-0.5, 0.5], ["0%", "100%"]);
+  const glowBackground = useTransform([glowX, glowY], (latest) => {
+    const [gx, gy] = latest as [string, string];
+    return `radial-gradient(circle at ${gx} ${gy}, oklch(0.769 0.165 64.5 / 0.35), transparent 55%)`;
+  });
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  }
+
+  function handleMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+      style={{ perspective: 1200 }}
+      className="w-full"
+    >
+      <motion.div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+        }}
+        className="group relative w-full rounded-3xl border border-primary/35 bg-card/90 overflow-hidden transition-[border-color,box-shadow] duration-300 hover:border-primary/70 shadow-[0_10px_40px_rgba(0,0,0,0.25)] hover:shadow-[0_35px_80px_-15px_rgba(0,0,0,0.55)]"
+      >
+        {/* cursor-follow spotlight */}
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{ background: glowBackground }}
+        />
+
+        {/* Image — lifted on its own Z-plane */}
+        <div
+          style={{ transform: "translateZ(60px)", transformStyle: "preserve-3d" }}
+          className="relative w-full overflow-hidden border-b border-primary/25"
+        >
+          <div
+            className="absolute inset-0 opacity-40 group-hover:opacity-70 transition duration-700"
+            style={{ background: "var(--gradient-hero)" }}
+          />
+          <img
+            src={badge.image}
+            alt={badge.title}
+            className="relative block w-full h-auto group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+            style={{ transform: "translateZ(20px)" }}
+          />
+          {/* glass sheen sweep */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+        </div>
+
+        {/* Content — lifted less than image so image visually "floats" above it */}
+        <div
+          style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
+          className="relative flex flex-col items-center text-center p-7"
+        >
+          <div
+            className="absolute inset-0 opacity-20 group-hover:opacity-40 transition duration-700"
+            style={{ background: "var(--gradient-hero)" }}
+          />
+          <div className="relative w-full">
+            <h3 className="text-xl font-black tracking-tight text-foreground group-hover:text-gradient-primary transition">
+              {badge.title}
+            </h3>
+            <p className="mt-2 text-sm text-foreground/75 leading-relaxed">{badge.desc}</p>
+
+            <div className="mt-5 flex items-center justify-center gap-3">
+              <span className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/40" />
+              <span className="shrink-0 flex items-center gap-1.5 text-[10px] tracking-[0.25em] uppercase text-primary/80 font-bold">
+                <Sparkles size={12} /> Verified Credential
+              </span>
+              <span className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/40" />
+            </div>
+
+            <a
+              href={badge.link}
+              target="_blank"
+              rel="noreferrer"
+              data-hover
+              style={{ transform: "translateZ(45px)" }}
+              className="mt-6 inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/40 text-primary text-[11px] font-black uppercase tracking-widest hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_25px_oklch(0.769_0.165_64.5/0.5)] transition-all duration-300"
+            >
+              <span>View Credential</span>
+              <ExternalLink size={12} className="group-hover:translate-x-0.5 transition" />
+            </a>
+          </div>
+        </div>
+
+        {/* edge light border */}
+        <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10 group-hover:ring-primary/40 transition duration-300" />
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-primary-glow to-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+      </motion.div>
+    </motion.div>
+  );
+}
+
 const features = [
   {
     icon: Cloud,
@@ -680,6 +856,37 @@ const heroStats = [
   { n: "500+", l: "Builders" },
   { n: "3+", l: "Events" },
   { n: "5K+", l: "Global Network" },
+];
+
+// Achievement badges — add a new object here for every new badge earned.
+// The grid layout above (sm:2 / lg:3 / xl:4 columns) adjusts automatically.
+const badges: {
+  tag: string;
+  title: string;
+  desc: string;
+  issued: string;
+  image: string;
+  link: string;
+}[] = [
+  {
+    tag: "SPARK",
+    title: "AWS SBG Spark Badge",
+    desc: "Earned by our leadership for hosting our very first community event.",
+    issued: "Aug 06, 2026",
+    image:
+      "https://res.cloudinary.com/txg3hveh/image/upload/v1787239556/spark_badge_jdhdr9.png",
+    link: "https://www.credly.com/badges/ea3ead71-7b33-45b4-8cc8-137a30a2685c",
+  },
+  {
+    tag: "IGNITE",
+    title: "AWS SBG Ignite Badge",
+    desc: "Earned by our leadership for hosting our second community event.",
+    issued: "Aug 13, 2026",
+    image:
+      "https://res.cloudinary.com/txg3hveh/image/upload/v1787239556/ignite_bdge_zu5caz.png",
+    link: "https://www.credly.com/badges/e242ed74-8ad1-49f5-b631-64816a74c002",
+  },
+  // Next badge? Just add a new object here — layout auto-adjusts.
 ];
 
 const galleryItems: {
