@@ -63,9 +63,6 @@ export default function Index() {
           <div className="absolute bottom-24 left-6 md:left-10 text-[9px] tracking-[0.4em] uppercase text-muted-foreground font-mono">
             ◢ build · ship · scale
           </div>
-          <div className="absolute bottom-24 right-6 md:right-10 text-[9px] tracking-[0.4em] uppercase text-muted-foreground font-mono">
-            lat 28.6° · lon 77.2°
-          </div>
         </div>
 
         {/* Floating service badges around the scene */}
